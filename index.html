@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0d2818" />
+<title>Our Love Hub · Hama &amp; Sammy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { forest: { DEFAULT: '#0d2818', 2: '#16382c' }, sage: '#2d6a4f', cream: '#fefae0', gold: '#dda15e', amberx: '#ffb703', blush: '#ffb3c6' },
+      fontFamily: { display: ['Playfair Display', 'serif'], script: ['Dancing Script', 'cursive'], sans: ['Inter', 'system-ui', 'sans-serif'] }
+    } }
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root { --forest:#0d2818; --forest2:#16382c; --sage:#2d6a4f; --cream:#fefae0; --gold:#dda15e; --amber:#ffb703; --blush:#ffb3c6; }
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-padding-top: 84px; }
+  body { background: var(--forest); color: var(--cream); font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; min-height: 100vh; }
+  body::before { /* aurora */
+    content:''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 15% 8%, rgba(45,106,79,.55), transparent 70%),
+      radial-gradient(45% 40% at 88% 20%, rgba(221,161,94,.16), transparent 70%),
+      radial-gradient(55% 45% at 70% 95%, rgba(255,179,198,.10), transparent 70%),
+      linear-gradient(180deg, #0d2818 0%, #0a2013 55%, #07170e 100%);
+  }
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #08190f; }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(#2d6a4f, #1d4a37); border-radius: 99px; border: 2px solid #08190f; }
+  * { scrollbar-color: #2d6a4f #08190f; scrollbar-width: thin; }
+  /* glass */
+  .glass { background: rgba(255,255,255,.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.10); box-shadow: 0 20px 60px -20px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06); }
+  .glass-soft { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+  .text-gold-grad { background: linear-gradient(100deg, #ffe3b3, #dda15e 45%, #ffb3c6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .eyebrow { letter-spacing: .28em; text-transform: uppercase; font-size: .7rem; color: var(--gold); font-weight: 600; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:600; border-radius:.9rem; padding:.7rem 1.1rem; transition: transform .2s, box-shadow .25s, background .25s, filter .25s; cursor:pointer; user-select:none; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0) scale(.98); }
+  .btn-gold { background: linear-gradient(135deg,#f3c58a,#dda15e 55%,#c98a45); color:#1a2e1f; box-shadow: 0 10px 30px -8px rgba(221,161,94,.55); }
+  .btn-gold:hover { box-shadow: 0 14px 38px -8px rgba(221,161,94,.75); }
+  .btn-sage { background: linear-gradient(135deg,#38805f,#2d6a4f); color: var(--cream); box-shadow: 0 10px 26px -10px rgba(45,106,79,.9); }
+  .btn-ghost { background: rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); color: var(--cream); }
+  .btn-ghost:hover { background: rgba(255,255,255,.13); }
+  .btn-rose { background: linear-gradient(135deg,#ff9fb7,#ff7a9c); color:#40101f; }
+  .btn.is-active { background: linear-gradient(135deg,#f3c58a,#dda15e); color:#1a2e1f; border-color: transparent; }
+  .field { width:100%; background: rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.12); border-radius:.85rem; padding:.7rem .9rem; color: var(--cream); outline:none; transition: border-color .2s, box-shadow .2s; }
+  .field:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(221,161,94,.18); }
+  .field::placeholder { color: rgba(254,250,224,.35); }
+  select.field option { background: #16382c; color: #fefae0; }
+  input[type=range] { accent-color: var(--gold); }
+  input[type=color] { -webkit-appearance:none; appearance:none; border:none; padding:0; background:none; cursor:pointer; width:40px; height:40px; border-radius:50%; overflow:hidden; }
+  input[type=color]::-webkit-color-swatch-wrapper { padding:0; }
+  input[type=color]::-webkit-color-swatch { border:2px solid rgba(255,255,255,.5); border-radius:50%; }
+  /* section reveal */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  /* nav */
+  .nav-link { position:relative; padding:.4rem .2rem; color: rgba(254,250,224,.65); transition: color .2s; font-size:.88rem; font-weight:500; }
+  .nav-link:hover, .nav-link.active { color: var(--cream); }
+  .nav-link.active::after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; border-radius:2px; background: var(--gold); }
+  /* counter */
+  .count-card { position:relative; overflow:hidden; }
+  .count-card::before { content:''; position:absolute; inset:-40% -20% auto -20%; height:70%; background: radial-gradient(closest-side, rgba(221,161,94,.22), transparent); pointer-events:none; }
+  .num-pop { animation: numpop .35s ease; }
+  @keyframes numpop { 0% { transform: translateY(-6px); opacity:.4; } 100% { transform:none; opacity:1; } }
+  .heartbeat { animation: heartbeat 1.6s ease-in-out infinite; transform-origin:center; }
+  @keyframes heartbeat { 0%,100% { transform: scale(1); } 12% { transform: scale(1.18); } 24% { transform: scale(1); } 36% { transform: scale(1.12); } 48% { transform: scale(1); } }
+  .shimmer { background-size: 200% auto; animation: shimmer 6s linear infinite; }
+  @keyframes shimmer { to { background-position: 200% center; } }
+  .float-y { animation: floaty 6s ease-in-out infinite; }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  /* bouquet */
+  .bloom { transform-box: fill-box; transform-origin: center; animation: bloom .8s cubic-bezier(.2,1.4,.4,1) both; }
+  @keyframes bloom { from { transform: scale(0) rotate(-40deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+  .flower-card { transition: transform .25s, border-color .25s, background .25s; }
+  .flower-card:hover { transform: translateY(-3px); }
+  .flower-card.has { border-color: rgba(221,161,94,.7); background: rgba(221,161,94,.10); }
+  .swatch { transition: transform .2s, box-shadow .2s, border-color .2s; border: 2px solid transparent; }
+  .swatch.sel { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(221,161,94,.22); transform: translateY(-2px); }
+  /* gift gate */
+  #gate { background: radial-gradient(70% 60% at 50% 40%, #1f4f3a 0%, #0d2818 60%, #07170e 100%); transition: opacity .8s ease, visibility .8s; }
+  #gate.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+  .gift { position: relative; width: 230px; height: 230px; margin: 0 auto; animation: wiggle 3s ease-in-out infinite; }
+  .gift.opened { animation: none; }
+  @keyframes wiggle { 0%,100% { transform: rotate(0); } 4% { transform: rotate(-3deg); } 8% { transform: rotate(3deg); } 12% { transform: rotate(-2deg); } 16% { transform: rotate(0); } }
+  .gift-base { position:absolute; left:18px; right:18px; bottom:0; height:140px; border-radius:10px 10px 16px 16px; background: linear-gradient(160deg,#2d6a4f,#1b4332); box-shadow: 0 30px 50px -20px #000, inset 0 0 0 2px rgba(255,255,255,.07); }
+  .gift-base::after, .gift-lid::after { content:''; position:absolute; top:0; bottom:0; left:50%; width:34px; margin-left:-17px; background: linear-gradient(90deg,#c98a45,#f3c58a,#c98a45); }
+  .gift-lid { position:absolute; left:6px; right:6px; bottom:128px; height:62px; border-radius:12px; background: linear-gradient(160deg,#38805f,#245a43); box-shadow: 0 10px 20px -8px rgba(0,0,0,.6), inset 0 0 0 2px rgba(255,255,255,.08); transition: transform 1s cubic-bezier(.3,.9,.3,1), opacity .9s; z-index: 3; }
+  .gift.opened .gift-lid { transform: translate(60px,-150px) rotate(24deg); opacity: 0; }
+  .bow { position:absolute; left:50%; top:-34px; width:110px; margin-left:-55px; height:50px; z-index:4; }
+  .bow i { position:absolute; top:0; width:50px; height:40px; border:9px solid #f3c58a; border-radius:60% 40% 60% 40%; }
+  .bow i:first-child { left:0; transform: rotate(-18deg); } .bow i:nth-child(2) { right:0; transform: scaleX(-1) rotate(-18deg); }
+  .bow b { position:absolute; left:50%; top:16px; width:26px; height:26px; margin-left:-13px; border-radius:50%; background: radial-gradient(circle at 35% 30%, #ffe3b3, #c98a45); box-shadow: 0 3px 8px rgba(0,0,0,.4); }
+  .gift-glow { position:absolute; left:50%; top:40%; width:260px; height:260px; margin:-130px; border-radius:50%; background: radial-gradient(closest-side, rgba(255,214,150,.9), rgba(255,179,198,.35) 55%, transparent); opacity:0; transform: scale(.3); transition: opacity .8s, transform 1.1s; z-index:1; }
+  .gift.opened .gift-glow { opacity: 1; transform: scale(2.4); }
+  .gift-inside { position:absolute; left:50%; bottom:100px; width:60px; margin-left:-30px; text-align:center; font-size:46px; opacity:0; transition: all 1s .3s; z-index:2; }
+  .gift.opened .gift-inside { opacity:1; transform: translateY(-80px) scale(1.3); }
+  .love-card { background: linear-gradient(160deg,#fffdf0,#f4ecc9); color:#3a2a17; position:relative; }
+  .love-card::before { content:''; position:absolute; inset:10px; border:1px solid rgba(160,120,60,.35); border-radius:14px; pointer-events:none; }
+  .pop-in { animation: popin .9s cubic-bezier(.2,1.3,.4,1) both; }
+  @keyframes popin { from { opacity: 0; transform: translateY(40px) scale(.85); } to { opacity: 1; transform: none; } }
+  /* canvas boards */
+  #board { touch-action: none; border-radius: 1.1rem; display:block; width:100%; height:100%; }
+  .board-wrap { height: 560px; position: relative; border-radius: 1.2rem; overflow: hidden; border: 1px solid rgba(255,255,255,.12); box-shadow: inset 0 0 40px rgba(0,0,0,.25); }
+  @media (max-width: 640px) { .board-wrap { height: 440px; } }
+  .swatch-dot { width: 26px; height: 26px; border-radius: 50%; border: 2px solid rgba(255,255,255,.35); transition: transform .15s; cursor:pointer; }
+  .swatch-dot:hover { transform: scale(1.18); } .swatch-dot.sel { outline: 2px solid var(--gold); outline-offset: 2px; }
+  /* games */
+  .ttt-cell { aspect-ratio: 1; border-radius: 1rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); display:grid; place-items:center; transition: background .2s, transform .15s; cursor:pointer; }
+  .ttt-cell:hover:not(.filled) { background: rgba(221,161,94,.14); transform: scale(1.03); }
+  .ttt-cell.win { background: rgba(221,161,94,.28); border-color: var(--gold); animation: heartbeat 1.2s infinite; }
+  .ttt-cell svg { width: 56%; height: 56%; animation: popin .35s both; }
+  .mem-card { perspective: 800px; aspect-ratio: 1; cursor: pointer; }
+  .mem-inner { position:relative; width:100%; height:100%; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.3,.8,.3,1); }
+  .mem-card.flip .mem-inner { transform: rotateY(180deg); }
+  .mem-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:.95rem; display:grid; place-items:center; }
+  .mem-front { background: linear-gradient(145deg,#1f4f3a,#16382c); border:1px solid rgba(221,161,94,.35); color: var(--gold); }
+  .mem-back { transform: rotateY(180deg); background: linear-gradient(145deg,#fff8dc,#f3e6b8); font-size: clamp(1.6rem, 5vw, 2.4rem); }
+  .mem-card.done .mem-back { background: linear-gradient(145deg,#ffe3b3,#dda15e); box-shadow: 0 0 24px rgba(221,161,94,.5); }
+  .quiz-opt { text-align:left; width:100%; padding:.9rem 1.1rem; border-radius:.95rem; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); transition: all .2s; cursor:pointer; }
+  .quiz-opt:hover:not(:disabled) { background: rgba(221,161,94,.14); border-color: rgba(221,161,94,.6); transform: translateX(4px); }
+  .quiz-opt.right { background: rgba(64,201,120,.22); border-color: #40c978; }
+  .quiz-opt.wrong { background: rgba(255,99,120,.2); border-color: #ff6378; }
+  #catchCanvas { width: 100%; border-radius: 1.1rem; background: #07170e; touch-action: none; display:block; cursor: none; }
+  .game-pane { display:none; } .game-pane.active { display:block; animation: fadein .45s ease; }
+  @keyframes fadein { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+  /* letters */
+  .paper-parchment { background: repeating-linear-gradient(180deg, transparent 0 31px, rgba(120,80,30,.14) 31px 32px), radial-gradient(120% 100% at 0 0, #fff6d6, #f1e0ab); color:#4a3118; }
+  .paper-velvet { background: radial-gradient(120% 100% at 20% 0%, #7a1f3d, #3d0b1f 70%); color:#ffe9c7; box-shadow: inset 0 0 60px rgba(0,0,0,.5); }
+  .paper-starry { background:
+      radial-gradient(1.5px 1.5px at 12% 22%, #fff 99%, transparent), radial-gradient(1px 1px at 38% 68%, #fff 99%, transparent), radial-gradient(2px 2px at 72% 30%, #ffe9a8 99%, transparent),
+      radial-gradient(1px 1px at 85% 80%, #fff 99%, transparent), radial-gradient(1.5px 1.5px at 55% 12%, #fff 99%, transparent), radial-gradient(1px 1px at 25% 90%, #fff 99%, transparent),
+      linear-gradient(170deg, #0b1236, #1b2a6b 55%, #3b2f7a); color:#eaf0ff; }
+  .letter-card { transition: transform .3s; }
+  .letter-card:hover { transform: rotate(0deg) scale(1.02) !important; z-index: 5; }
+  .pin { position:absolute; top:-8px; left:50%; width:18px; height:18px; margin-left:-9px; border-radius:50%; background: radial-gradient(circle at 35% 30%, #ffb3c6, #c1121f); box-shadow: 0 4px 6px rgba(0,0,0,.45); }
+  .switch { position:relative; width:52px; height:30px; border-radius:99px; background: rgba(255,255,255,.15); transition: background .25s; cursor:pointer; flex:none; }
+  .switch::after { content:''; position:absolute; top:3px; left:3px; width:24px; height:24px; border-radius:50%; background:#fff; transition: transform .25s; box-shadow: 0 2px 6px rgba(0,0,0,.4); }
+  .switch.on { background: var(--sage); } .switch.on::after { transform: translateX(22px); background: var(--gold); }
+  /* album */
+  .masonry { column-gap: 1rem; columns: 1; } @media (min-width: 640px) { .masonry { columns: 2; } } @media (min-width: 1024px) { .masonry { columns: 3; } } @media (min-width: 1280px) { .masonry { columns: 4; } }
+  .photo { break-inside: avoid; margin-bottom: 1rem; position: relative; overflow: hidden; }
+  .photo img { transition: transform .6s; } .photo:hover img { transform: scale(1.05); }
+  .dropzone.drag { border-color: var(--gold); background: rgba(221,161,94,.12); }
+  /* player */
+  #player { box-shadow: 0 25px 70px -15px rgba(0,0,0,.8); }
+  .eq span { display:inline-block; width:3px; border-radius:2px; background: var(--gold); height: 4px; transition: height .12s; }
+  input[type=range].slim { -webkit-appearance:none; appearance:none; height:4px; border-radius:99px; background: rgba(255,255,255,.18); outline:none; }
+  input[type=range].slim::-webkit-slider-thumb { -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background: var(--gold); cursor:pointer; box-shadow:0 0 0 4px rgba(221,161,94,.2); }
+  input[type=range].slim::-moz-range-thumb { width:14px; height:14px; border:none; border-radius:50%; background: var(--gold); cursor:pointer; }
+  /* toast */
+  .toast { animation: toastin .4s cubic-bezier(.2,1.3,.4,1) both; }
+  @keyframes toastin { from { opacity:0; transform: translateY(-14px) scale(.92); } to { opacity:1; transform:none; } }
+  .modal-bg { background: rgba(3,12,7,.88); backdrop-filter: blur(6px); }
+  /* login / roles */
+  body.locked header, body.locked main, body.locked #player { display: none !important; }
+  body:not([data-user="Hama"]) .hama-only { display: none !important; }
+  body:not([data-user="Sammy"]) .sammy-only { display: none !important; }
+  #login { background: radial-gradient(70% 60% at 50% 30%, #1f4f3a 0%, #0d2818 60%, #07170e 100%); }
+  #login.hide { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .6s, visibility .6s; }
+  .user-tab { transition: all .25s; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); }
+  .user-tab.sel { border-color: var(--gold); background: rgba(221,161,94,.16); box-shadow: 0 0 0 4px rgba(221,161,94,.12); }
+  .shake { animation: shake .45s; } @keyframes shake { 20%,60% { transform: translateX(-8px); } 40%,80% { transform: translateX(8px); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+</style>
+</head>
+<body class="antialiased locked" data-user="">
+
+<!-- ambient particle canvas -->
+<canvas id="fx" class="fixed inset-0 z-[1] pointer-events-none"></canvas>
+<div id="toasts" class="fixed top-20 left-1/2 -translate-x-1/2 z-[300] flex flex-col gap-2 items-center pointer-events-none w-[92%] max-w-md"></div>
+
+<!-- ============ LOGIN ============ -->
+<div id="login" class="fixed inset-0 z-[250] flex items-center justify-center overflow-y-auto p-4">
+  <div class="w-full max-w-md py-8">
+    <div class="text-center mb-7">
+      <span class="inline-grid w-16 h-16 rounded-2xl bg-gradient-to-br from-gold to-blush place-items-center text-forest heartbeat shadow-2xl"><i data-lucide="heart" class="w-8 h-8" fill="currentColor"></i></span>
+      <p class="eyebrow mt-5">Private &amp; just for two</p>
+      <h1 class="font-display text-4xl sm:text-5xl mt-2">Our <span class="text-gold-grad italic">Love</span> Hub</h1>
+      <p class="font-script text-2xl text-cream/70 mt-2">Who is coming in today?</p>
+    </div>
+    <form id="loginForm" class="glass rounded-[2rem] p-6 sm:p-8 space-y-5" autocomplete="off">
+      <div class="grid grid-cols-2 gap-3" id="userTabs">
+        <button type="button" data-u="Hama" class="user-tab rounded-2xl p-4 text-center"><span class="block text-3xl mb-1">🌿</span><span class="font-display text-xl">Hama</span></button>
+        <button type="button" data-u="Sammy" class="user-tab rounded-2xl p-4 text-center"><span class="block text-3xl mb-1">🌸</span><span class="font-display text-xl">Sammy</span></button>
+      </div>
+      <div><label class="text-xs uppercase tracking-widest text-cream/50">Name</label>
+        <input id="loginUser" class="field mt-1.5" placeholder="Hama or Sammy" autocapitalize="words" spellcheck="false" /></div>
+      <div><label class="text-xs uppercase tracking-widest text-cream/50">Password</label>
+        <div class="relative mt-1.5"><input id="loginPass" type="password" inputmode="numeric" class="field pr-12" placeholder="Your password" />
+          <button type="button" id="passEye" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-cream/50 hover:text-cream" aria-label="Show password"><i data-lucide="eye" class="w-5 h-5"></i></button></div></div>
+      <label class="flex items-center gap-2 text-sm text-cream/60 cursor-pointer"><input id="loginRemember" type="checkbox" class="accent-[#dda15e]"> Keep me signed in on this device</label>
+      <p id="loginErr" class="hidden text-sm text-rose-300 bg-rose-500/10 border border-rose-400/20 rounded-xl px-4 py-2.5"></p>
+      <button type="submit" class="btn btn-gold w-full text-lg !py-3.5"><i data-lucide="log-in" class="w-5 h-5"></i> Enter</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ SAMMY'S GIFT GATE ============ -->
+<div id="gate" class="hide fixed inset-0 z-[200] flex items-center justify-center overflow-y-auto p-4" style="display:none">
+  <canvas id="confetti" class="fixed inset-0 z-[3] pointer-events-none"></canvas>
+  <div id="gateStage" class="relative z-[2] text-center py-10">
+    <p class="eyebrow mb-3" id="gateEyebrow">A gift from Hama · for Sammy</p>
+    <h2 class="font-display text-3xl sm:text-4xl mb-10">Something <span class="text-gold-grad italic">beautiful</span> is waiting for you</h2>
+    <div id="giftBox" class="gift">
+      <div class="gift-glow"></div>
+      <div class="gift-inside">💐</div>
+      <div class="gift-lid"><div class="bow"><i></i><i></i><b></b></div></div>
+      <div class="gift-base"></div>
+    </div>
+    <div class="mt-12 flex flex-col items-center gap-4">
+      <button id="unwrapBtn" class="btn btn-gold text-lg px-9 py-4 shadow-2xl"><i data-lucide="gift" class="w-5 h-5"></i> Tap to Unwrap</button>
+      <button id="skipGate" class="text-sm text-cream/45 hover:text-cream underline underline-offset-4">Open it later</button>
+    </div>
+  </div>
+  <div id="gateReveal" class="hidden relative z-[2] w-full max-w-4xl py-8">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <div class="pop-in glass rounded-[2rem] p-4"><div id="revealBouquet" class="w-full max-w-sm mx-auto"></div></div>
+      <div class="pop-in love-card rounded-[2rem] p-8 sm:p-10 shadow-2xl" style="animation-delay:.35s">
+        <p class="eyebrow" style="color:#a0702f">For my love</p>
+        <h3 class="font-script text-5xl mt-2 mb-4" id="revealTo">Dear Sammy,</h3>
+        <p id="revealNote" class="font-script text-2xl leading-relaxed whitespace-pre-wrap"></p>
+        <p class="font-script text-3xl mt-6 text-right" id="revealFrom">— Hama ♥</p>
+        <div id="revealMeta" class="mt-6 text-xs tracking-widest uppercase text-[#8a6a3a]"></div>
+        <div id="previewBadge" class="hidden mt-4 text-xs px-3 py-1.5 rounded-full bg-[#dda15e]/25 text-[#8a5a1a] inline-block">Preview — this is how Sammy will see it</div>
+      </div>
+    </div>
+    <div class="text-center mt-8"><button id="enterHub" class="btn btn-gold px-9 py-4 text-lg"><i data-lucide="heart" class="w-5 h-5"></i> <span id="enterHubTxt">Enter Our Love Hub</span></button></div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 pt-3">
+    <nav class="glass rounded-2xl px-4 py-2.5 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-gold to-blush grid place-items-center text-forest heartbeat"><i data-lucide="heart" class="w-5 h-5" fill="currentColor"></i></span>
+        <span class="font-display text-lg leading-none">Our Love Hub<small class="block font-sans text-[10px] tracking-[.25em] text-gold uppercase mt-0.5">Hama &amp; Sammy</small></span>
+      </a>
+      <div class="hidden lg:flex items-center gap-6" id="navLinks">
+        <a class="nav-link" href="#home">Together</a><a class="nav-link hama-only" href="#bouquet">Bouquet</a><a class="nav-link" href="#draw">Draw</a><a class="nav-link" href="#games">Games</a><a class="nav-link" href="#letters">Letters</a><a class="nav-link" href="#album">Album</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="replayGift" class="sammy-only btn btn-gold !py-2 !px-3 text-sm" style="display:none" title="Open your gift"><i data-lucide="gift" class="w-4 h-4"></i><span class="hidden sm:inline">My gift</span></button>
+        <span id="userChip" class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-sm"><span id="userEmoji">🌿</span><b id="userName" class="font-semibold">Hama</b></span>
+        <button id="logoutBtn" class="btn btn-ghost !py-2 !px-3 text-sm" title="Sign out"><i data-lucide="log-out" class="w-4 h-4"></i><span class="hidden sm:inline">Sign out</span></button>
+        <button id="menuBtn" class="lg:hidden btn btn-ghost !p-2.5"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden lg:hidden glass rounded-2xl mt-2 p-3 grid grid-cols-3 gap-2 text-center text-sm">
+      <a class="btn btn-ghost" href="#home">Together</a><a class="btn btn-ghost hama-only" href="#bouquet">Bouquet</a><a class="btn btn-ghost" href="#draw">Draw</a><a class="btn btn-ghost" href="#games">Games</a><a class="btn btn-ghost" href="#letters">Letters</a><a class="btn btn-ghost" href="#album">Album</a>
+    </div>
+  </div>
+</header>
+
+<main class="relative z-10">
+
+<!-- ============ HERO / COUNTER ============ -->
+<section id="home" class="max-w-6xl mx-auto px-4 pt-36 pb-20 text-center">
+  <p class="eyebrow reveal">✦ Our little universe ✦</p>
+  <p id="welcome" class="reveal font-script text-3xl text-blush mt-3"></p>
+  <h1 class="reveal font-display text-6xl sm:text-7xl md:text-8xl mt-4 leading-[1.05]">
+    <span class="text-gold-grad shimmer">Hama</span> <span class="text-blush heartbeat inline-block">&amp;</span> <span class="text-gold-grad shimmer">Sammy</span>
+  </h1>
+  <p class="reveal font-script text-3xl sm:text-4xl text-cream/80 mt-4">Every second with you becomes part of our story</p>
+
+  <div class="reveal mt-12">
+    <p class="text-xs tracking-[.3em] uppercase text-cream/50 mb-4">Together for</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 max-w-4xl mx-auto">
+      <div class="glass count-card rounded-3xl py-7 px-3"><div id="cDays" class="font-display text-5xl sm:text-6xl text-gold-grad">00</div><div class="mt-2 text-[11px] tracking-[.3em] uppercase text-cream/55">Days</div></div>
+      <div class="glass count-card rounded-3xl py-7 px-3"><div id="cHours" class="font-display text-5xl sm:text-6xl text-gold-grad">00</div><div class="mt-2 text-[11px] tracking-[.3em] uppercase text-cream/55">Hours</div></div>
+      <div class="glass count-card rounded-3xl py-7 px-3"><div id="cMinutes" class="font-display text-5xl sm:text-6xl text-gold-grad">00</div><div class="mt-2 text-[11px] tracking-[.3em] uppercase text-cream/55">Minutes</div></div>
+      <div class="glass count-card rounded-3xl py-7 px-3 ring-1 ring-gold/30"><div id="cSeconds" class="font-display text-5xl sm:text-6xl text-blush">00</div><div class="mt-2 text-[11px] tracking-[.3em] uppercase text-cream/55">Seconds</div></div>
+    </div>
+  </div>
+
+  <div class="reveal grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-6 text-left">
+    <div class="glass rounded-2xl p-5 flex items-center gap-4"><span class="w-11 h-11 rounded-xl bg-sage/40 grid place-items-center text-gold"><i data-lucide="hourglass" class="w-5 h-5"></i></span><div><div id="sHours" class="font-display text-2xl">0</div><div class="text-xs text-cream/50">hours of us</div></div></div>
+    <div class="glass rounded-2xl p-5 flex items-center gap-4"><span class="w-11 h-11 rounded-xl bg-sage/40 grid place-items-center text-gold"><i data-lucide="calendar-heart" class="w-5 h-5"></i></span><div><div id="sSince" class="font-display text-lg leading-tight">—</div><div class="text-xs text-cream/50">where it began</div></div></div>
+    <div class="glass rounded-2xl p-5 flex items-center gap-4"><span class="w-11 h-11 rounded-xl bg-sage/40 grid place-items-center text-gold"><i data-lucide="timer" class="w-5 h-5"></i></span><div><div id="sMinutes" class="font-display text-2xl">0</div><div class="text-xs text-cream/50">minutes of us</div></div></div>
+  </div>
+
+  <div class="reveal glass rounded-3xl p-6 sm:p-7 max-w-4xl mx-auto mt-4 text-left">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+      <div class="flex items-center gap-2"><i data-lucide="trophy" class="w-5 h-5 text-gold"></i><span class="font-semibold">Next milestone</span></div>
+      <span id="msLabel" class="text-sm text-cream/70"></span>
+    </div>
+    <div class="h-3 rounded-full bg-white/10 overflow-hidden"><div id="msBar" class="h-full rounded-full bg-gradient-to-r from-sage via-gold to-blush transition-all duration-1000" style="width:0%"></div></div>
+    <div id="msChips" class="flex flex-wrap gap-2 mt-5"></div>
+  </div>
+
+  <div class="reveal mt-8 max-w-2xl mx-auto min-h-[3.2rem]"><p id="quote" class="font-script text-2xl sm:text-3xl text-blush transition-opacity duration-700"></p></div>
+
+  <div class="reveal mt-4">
+    <button id="adjustBtn" class="text-xs text-cream/40 hover:text-cream/80 inline-flex items-center gap-1.5"><i data-lucide="settings-2" class="w-3.5 h-3.5"></i> Adjust start time</button>
+    <div id="adjustPanel" class="hidden glass rounded-2xl p-4 max-w-md mx-auto mt-3 text-left">
+      <label class="text-sm text-cream/70">When did our story begin?</label>
+      <input id="startInput" type="datetime-local" class="field mt-2" />
+      <div class="flex gap-2 mt-3"><button id="startSave" class="btn btn-gold flex-1 !py-2">Save</button><button id="startReset" class="btn btn-ghost flex-1 !py-2">Reset to 48d 1h 40m</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOUQUET STUDIO ============ -->
+<section id="bouquet" class="hama-only max-w-7xl mx-auto px-4 py-16">
+  <div class="reveal text-center mb-10">
+    <p class="eyebrow">Hama's creator mode</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-2">The <span class="text-gold-grad italic">Bouquet</span> Studio</h2>
+    <p class="text-cream/60 mt-3 max-w-xl mx-auto">Build a bouquet stem by stem for Sammy. Pick flowers, choose the wrapping, tie the ribbon — then send it. Sammy will only see it when she signs in and unwraps it.</p>
+  </div>
+  <div class="reveal grid lg:grid-cols-[1.1fr_.9fr] gap-6">
+    <div class="glass rounded-[2rem] p-5 sm:p-7 space-y-8 order-2 lg:order-1">
+      <div>
+        <div class="flex items-center justify-between mb-3"><h3 class="font-display text-xl flex items-center gap-3"><span class="w-8 h-8 rounded-full bg-gold text-forest grid place-items-center text-sm font-bold">1</span> Pick your flowers</h3><span id="stemCount" class="text-xs text-cream/50"></span></div>
+        <div id="flowerGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+      </div>
+      <div>
+        <h3 class="font-display text-xl flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-gold text-forest grid place-items-center text-sm font-bold">2</span> Choose the wrapper</h3>
+        <div id="wrapperGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+      </div>
+      <div>
+        <h3 class="font-display text-xl flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-gold text-forest grid place-items-center text-sm font-bold">3</span> Tie the ribbon</h3>
+        <div id="ribbonGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+      </div>
+      <div>
+        <h3 class="font-display text-xl flex items-center gap-3 mb-3"><span class="w-8 h-8 rounded-full bg-gold text-forest grid place-items-center text-sm font-bold">4</span> Write the love card</h3>
+        <textarea id="bqNote" rows="4" maxlength="400" class="field font-script text-2xl leading-snug" placeholder="Sammy, every day with you..."></textarea>
+        <div class="flex justify-between text-xs text-cream/40 mt-1"><span>Shown on Sammy's gift card</span><span id="bqCount">0/400</span></div>
+      </div>
+    </div>
+    <div class="order-1 lg:order-2 lg:sticky lg:top-24 self-start space-y-4">
+      <div class="glass rounded-[2rem] p-5 relative overflow-hidden">
+        <div class="absolute inset-x-10 top-6 h-48 rounded-full bg-gold/10 blur-3xl"></div>
+        <div id="bqPreview" class="relative w-full max-w-[420px] mx-auto float-y"></div>
+        <div id="bqSummary" class="relative flex flex-wrap justify-center gap-2 mt-2 text-xs"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <button id="bqRandom" class="btn btn-ghost"><i data-lucide="shuffle" class="w-4 h-4"></i> Surprise me</button>
+        <button id="bqClear" class="btn btn-ghost"><i data-lucide="eraser" class="w-4 h-4"></i> Start over</button>
+        <button id="bqSave" class="btn btn-sage"><i data-lucide="save" class="w-4 h-4"></i> Save bouquet</button>
+        <button id="bqGift" class="btn btn-gold col-span-2"><i data-lucide="send" class="w-4 h-4"></i> Send to Sammy</button>
+        <button id="bqPreview2" class="btn btn-ghost col-span-2 !py-2.5 text-sm"><i data-lucide="eye" class="w-4 h-4"></i> Preview how Sammy will see it</button>
+      </div>
+      <p id="sentInfo" class="hidden text-center text-xs text-cream/55"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRAWING BOARD ============ -->
+<section id="draw" class="max-w-7xl mx-auto px-4 py-16">
+  <div class="reveal text-center mb-10">
+    <p class="eyebrow">Create together</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-2">The <span class="text-gold-grad italic">Infinite</span> Drawing Board</h2>
+    <p class="text-cream/60 mt-3 max-w-xl mx-auto">Endless canvas to doodle our world. Scroll to zoom, drag with the hand tool (or hold Space) to pan. Everything saves automatically.</p>
+  </div>
+  <div class="reveal glass rounded-[2rem] p-4 sm:p-6">
+    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
+      <div class="flex gap-1.5 p-1 rounded-2xl bg-black/20">
+        <button data-tool="brush" class="tool btn btn-ghost !p-2.5 is-active" title="Brush (B)"><i data-lucide="brush" class="w-5 h-5"></i></button>
+        <button data-tool="eraser" class="tool btn btn-ghost !p-2.5" title="Eraser (E)"><i data-lucide="eraser" class="w-5 h-5"></i></button>
+        <button data-tool="pan" class="tool btn btn-ghost !p-2.5" title="Pan (H)"><i data-lucide="hand" class="w-5 h-5"></i></button>
+      </div>
+      <select id="brushStyle" class="field !w-auto !py-2.5">
+        <option value="pen">Fine pen</option><option value="marker">Soft marker</option><option value="glow">Glow pen</option>
+      </select>
+      <div class="flex items-center gap-2"><input id="penColor" type="color" value="#c1121f" /><div id="palette" class="hidden md:flex gap-1.5"></div></div>
+      <label class="flex items-center gap-2 text-sm text-cream/70"><i data-lucide="minus" class="w-4 h-4"></i><input id="penSize" type="range" min="1" max="60" value="6" class="w-28" /><i data-lucide="plus" class="w-4 h-4"></i><span id="penSizeVal" class="w-7 text-right tabular-nums">6</span></label>
+      <select id="boardBg" class="field !w-auto !py-2.5"><option value="paper">Cream paper</option><option value="chalk">Chalkboard</option><option value="night">Night sky</option></select>
+      <div class="flex gap-1.5 ml-auto">
+        <button id="undoBtn" class="btn btn-ghost !p-2.5" title="Undo (Ctrl+Z)"><i data-lucide="undo-2" class="w-5 h-5"></i></button>
+        <button id="redoBtn" class="btn btn-ghost !p-2.5" title="Redo (Ctrl+Y)"><i data-lucide="redo-2" class="w-5 h-5"></i></button>
+        <button id="zoomOut" class="btn btn-ghost !p-2.5"><i data-lucide="zoom-out" class="w-5 h-5"></i></button>
+        <button id="zoomIn" class="btn btn-ghost !p-2.5"><i data-lucide="zoom-in" class="w-5 h-5"></i></button>
+        <button id="homeView" class="btn btn-ghost !p-2.5" title="Reset view"><i data-lucide="locate-fixed" class="w-5 h-5"></i></button>
+        <button id="dlBoard" class="btn btn-ghost !p-2.5" title="Download PNG"><i data-lucide="download" class="w-5 h-5"></i></button>
+        <button id="clearBoard" class="btn !p-2.5 bg-red-500/20 border border-red-400/30 text-red-200 hover:bg-red-500/30" title="Clear canvas"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+    <div class="board-wrap" id="boardWrap"><canvas id="board"></canvas>
+      <div class="absolute left-3 bottom-3 text-xs px-3 py-1.5 rounded-full bg-black/45 text-cream/80 backdrop-blur pointer-events-none" id="boardInfo"></div>
+      <div class="absolute right-3 bottom-3 text-xs px-3 py-1.5 rounded-full bg-black/45 text-cream/60 backdrop-blur pointer-events-none hidden sm:block">Space + drag to pan · scroll to zoom</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAMES ============ -->
+<section id="games" class="max-w-6xl mx-auto px-4 py-16">
+  <div class="reveal text-center mb-10">
+    <p class="eyebrow">Play together</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-2">The <span class="text-gold-grad italic">Mini-Games</span> Hub</h2>
+  </div>
+  <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-3 mb-6" id="gameTabs">
+    <button data-game="ttt" class="gtab glass rounded-2xl p-4 text-left transition hover:-translate-y-1"><i data-lucide="hash" class="w-6 h-6 text-gold mb-2"></i><div class="font-semibold">Tic-Tac-Love</div><div class="text-xs text-cream/50">Hearts vs Sparkles</div></button>
+    <button data-game="mem" class="gtab glass rounded-2xl p-4 text-left transition hover:-translate-y-1"><i data-lucide="layout-grid" class="w-6 h-6 text-gold mb-2"></i><div class="font-semibold">Memory Match</div><div class="text-xs text-cream/50">Find romantic pairs</div></button>
+    <button data-game="quiz" class="gtab glass rounded-2xl p-4 text-left transition hover:-translate-y-1"><i data-lucide="message-circle-question" class="w-6 h-6 text-gold mb-2"></i><div class="font-semibold">Love Quiz</div><div class="text-xs text-cream/50">Who knows who better?</div></button>
+    <button data-game="catch" class="gtab glass rounded-2xl p-4 text-left transition hover:-translate-y-1"><i data-lucide="gamepad-2" class="w-6 h-6 text-gold mb-2"></i><div class="font-semibold">Heart Catcher</div><div class="text-xs text-cream/50">Arcade</div></button>
+  </div>
+
+  <div class="reveal glass rounded-[2rem] p-5 sm:p-8">
+    <!-- TTT -->
+    <div id="game-ttt" class="game-pane">
+      <div class="grid md:grid-cols-[1fr_1fr] gap-8 items-center">
+        <div class="max-w-sm w-full mx-auto"><div id="tttBoard" class="grid grid-cols-3 gap-3"></div></div>
+        <div>
+          <h3 class="font-display text-3xl mb-1">Tic-Tac-Love</h3>
+          <p id="tttStatus" class="text-cream/70 mb-5 min-h-[1.5rem]"></p>
+          <div class="grid grid-cols-3 gap-3 mb-5 text-center">
+            <div class="glass-soft rounded-2xl p-4"><div class="text-blush mx-auto w-7 h-7" id="tttHeartIcon"></div><div id="tttScoreH" class="font-display text-3xl mt-1">0</div><div class="text-[11px] uppercase tracking-widest text-cream/50">Hama ♥</div></div>
+            <div class="glass-soft rounded-2xl p-4"><div class="font-display text-2xl text-cream/60 mt-1.5">=</div><div id="tttScoreD" class="font-display text-3xl mt-1">0</div><div class="text-[11px] uppercase tracking-widest text-cream/50">Draws</div></div>
+            <div class="glass-soft rounded-2xl p-4"><div class="text-gold mx-auto w-7 h-7" id="tttSparkIcon"></div><div id="tttScoreS" class="font-display text-3xl mt-1">0</div><div class="text-[11px] uppercase tracking-widest text-cream/50">Sammy ✦</div></div>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4" id="tttModes">
+            <button data-mode="2p" class="btn btn-ghost !py-2 text-sm is-active">Hama vs Sammy</button>
+            <button data-mode="easy" class="btn btn-ghost !py-2 text-sm">Play bot · gentle</button>
+            <button data-mode="hard" class="btn btn-ghost !py-2 text-sm">Play bot · clever</button>
+          </div>
+          <div class="flex gap-2"><button id="tttReset" class="btn btn-gold"><i data-lucide="rotate-ccw" class="w-4 h-4"></i> New round</button><button id="tttClear" class="btn btn-ghost">Reset scores</button></div>
+        </div>
+      </div>
+    </div>
+    <!-- MEMORY -->
+    <div id="game-mem" class="game-pane">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-5">
+        <div><h3 class="font-display text-3xl">Couple's Memory Match</h3><p class="text-cream/60 text-sm">Flip two cards at a time. Match all 8 pairs in as few moves as you can.</p></div>
+        <div class="flex gap-3 text-center">
+          <div class="glass-soft rounded-2xl px-5 py-2"><div id="memMoves" class="font-display text-2xl">0</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Moves</div></div>
+          <div class="glass-soft rounded-2xl px-5 py-2"><div id="memTime" class="font-display text-2xl">0:00</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Time</div></div>
+          <div class="glass-soft rounded-2xl px-5 py-2"><div id="memBest" class="font-display text-2xl text-gold">—</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Best</div></div>
+        </div>
+      </div>
+      <div id="memBoard" class="grid grid-cols-4 gap-2 sm:gap-4 max-w-xl mx-auto"></div>
+      <div class="text-center mt-6"><button id="memReset" class="btn btn-gold"><i data-lucide="shuffle" class="w-4 h-4"></i> Shuffle &amp; restart</button></div>
+    </div>
+    <!-- QUIZ -->
+    <div id="game-quiz" class="game-pane">
+      <div class="grid lg:grid-cols-[1.4fr_1fr] gap-8">
+        <div>
+          <div class="flex items-center justify-between mb-4"><h3 class="font-display text-3xl">Who Knows Who Better?</h3><span id="quizProg" class="text-sm text-cream/55"></span></div>
+          <div id="quizBox"></div>
+        </div>
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-3 text-center">
+            <div id="qHama" class="glass-soft rounded-2xl p-4 transition"><div class="text-xs uppercase tracking-widest text-cream/50">Hama</div><div id="qScoreH" class="font-display text-4xl text-gold-grad mt-1">0</div></div>
+            <div id="qSammy" class="glass-soft rounded-2xl p-4 transition"><div class="text-xs uppercase tracking-widest text-cream/50">Sammy</div><div id="qScoreS" class="font-display text-4xl text-gold-grad mt-1">0</div></div>
+          </div>
+          <details class="glass-soft rounded-2xl p-4">
+            <summary class="cursor-pointer font-semibold flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4 text-gold"></i> Add your own question</summary>
+            <div class="mt-3 space-y-2">
+              <input id="cqQ" class="field" placeholder="e.g. Where was our first date?" />
+              <input id="cqA" class="field" placeholder="Correct answer" />
+              <input id="cqB" class="field" placeholder="Wrong answer 1" />
+              <input id="cqC" class="field" placeholder="Wrong answer 2" />
+              <button id="cqAdd" class="btn btn-sage w-full !py-2.5">Add to quiz</button>
+              <p id="cqInfo" class="text-xs text-cream/50"></p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+    <!-- CATCHER -->
+    <div id="game-catch" class="game-pane">
+      <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+        <div><h3 class="font-display text-3xl">Heart Catcher Arcade</h3><p class="text-cream/60 text-sm">Catch hearts, grab golden ones for bonus points — dodge the broken ones. Move with mouse, touch, or ← → / A D.</p></div>
+        <div class="flex gap-3 text-center">
+          <div class="glass-soft rounded-2xl px-4 py-2"><div id="cScore" class="font-display text-2xl">0</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Score</div></div>
+          <div class="glass-soft rounded-2xl px-4 py-2"><div id="cLives" class="text-xl leading-[2rem]">♥♥♥</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Lives</div></div>
+          <div class="glass-soft rounded-2xl px-4 py-2"><div id="cLevel" class="font-display text-2xl">1</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Level</div></div>
+          <div class="glass-soft rounded-2xl px-4 py-2"><div id="cBest" class="font-display text-2xl text-gold">0</div><div class="text-[10px] uppercase tracking-widest text-cream/50">Best</div></div>
+        </div>
+      </div>
+      <canvas id="catchCanvas" width="760" height="440"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOVE LETTERS ============ -->
+<section id="letters" class="max-w-7xl mx-auto px-4 py-16">
+  <div class="reveal text-center mb-10">
+    <p class="eyebrow">Words from the heart</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-2">Love <span class="text-gold-grad italic">Letters</span></h2>
+  </div>
+  <div class="reveal grid lg:grid-cols-2 gap-6">
+    <div class="glass rounded-[2rem] p-5 sm:p-7 space-y-4">
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div><label class="text-xs uppercase tracking-widest text-cream/50">From</label>
+          <div class="mt-1.5 field !flex items-center gap-2 !bg-white/5"><span id="fromEmoji">🌿</span><b id="fromBadge">Hama</b><span class="text-xs text-cream/40 ml-auto">signed in</span></div></div>
+        <div><label class="text-xs uppercase tracking-widest text-cream/50">Title</label><input id="lTitle" class="field mt-1.5" placeholder="My dearest..." maxlength="60" /></div>
+      </div>
+      <div><label class="text-xs uppercase tracking-widest text-cream/50">Paper</label>
+        <div class="grid grid-cols-3 gap-2 mt-1.5" id="paperPick">
+          <button data-paper="parchment" class="paper-parchment rounded-xl h-14 text-sm font-semibold swatch sel">Parchment</button>
+          <button data-paper="velvet" class="paper-velvet rounded-xl h-14 text-sm font-semibold swatch">Dark Velvet</button>
+          <button data-paper="starry" class="paper-starry rounded-xl h-14 text-sm font-semibold swatch">Starry Night</button>
+        </div></div>
+      <div><label class="text-xs uppercase tracking-widest text-cream/50">Your letter</label>
+        <div id="lPreview" class="paper-parchment rounded-2xl mt-1.5 p-1 shadow-xl"><textarea id="lText" rows="8" maxlength="1200" class="w-full bg-transparent outline-none resize-none p-4 font-script text-2xl leading-8 placeholder:opacity-40" placeholder="Write your love note here..." style="color:inherit"></textarea></div>
+        <div class="flex justify-between text-xs text-cream/40 mt-1"><span>Tip: Ctrl + Enter to pin</span><span id="lCount">0/1200</span></div></div>
+      <button id="lPin" class="btn btn-gold w-full"><i data-lucide="pin" class="w-4 h-4"></i> Pin to our bulletin board</button>
+      <div class="glass-soft rounded-2xl p-4 flex items-center gap-4">
+        <span class="w-11 h-11 rounded-xl bg-blush/20 text-blush grid place-items-center flex-none"><i data-lucide="bell-ring" class="w-5 h-5"></i></span>
+        <div class="flex-1 min-w-0"><div class="font-semibold">Enable Love Notifications</div><div id="notifyInfo" class="text-xs text-cream/50">Get a little alert whenever a new letter is pinned.</div></div>
+        <div id="notifySwitch" class="switch" role="switch" tabindex="0" aria-checked="false"></div>
+      </div>
+      <button id="notifyTest" class="btn btn-ghost w-full !py-2.5 text-sm"><i data-lucide="send" class="w-4 h-4"></i> Send a test love alert</button>
+    </div>
+    <div class="glass rounded-[2rem] p-5 sm:p-7">
+      <div class="flex items-center justify-between mb-5"><h3 class="font-display text-2xl flex items-center gap-2"><i data-lucide="layout-dashboard" class="w-5 h-5 text-gold"></i> Our bulletin board</h3><span id="letterCount" class="text-sm text-cream/50"></span></div>
+      <div id="letterBoard" class="grid sm:grid-cols-2 gap-x-4 gap-y-6 max-h-[780px] overflow-y-auto p-3 -m-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALBUM ============ -->
+<section id="album" class="max-w-7xl mx-auto px-4 py-16 pb-40">
+  <div class="reveal text-center mb-10">
+    <p class="eyebrow">Our memories</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-2">Shared <span class="text-gold-grad italic">Photo Album</span></h2>
+  </div>
+  <div class="reveal glass rounded-[2rem] p-5 sm:p-8">
+    <label id="dropzone" class="dropzone block cursor-pointer rounded-3xl border-2 border-dashed border-white/20 p-8 text-center transition mb-6">
+      <input id="photoInput" type="file" accept="image/*" multiple class="hidden" />
+      <i data-lucide="image-plus" class="w-10 h-10 mx-auto text-gold"></i>
+      <div class="font-display text-xl mt-2">Drop photos here or tap to upload</div>
+      <div class="text-xs text-cream/50 mt-1">Photos are resized and saved privately in this browser</div>
+    </label>
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-5 text-sm text-cream/60">
+      <span id="photoCount"></span>
+      <div class="flex items-center gap-3 min-w-[220px]"><span class="text-xs">Storage</span><div class="flex-1 h-2 rounded-full bg-white/10 overflow-hidden"><div id="storeBar" class="h-full bg-gradient-to-r from-sage to-gold" style="width:0%"></div></div><span id="storeTxt" class="text-xs tabular-nums"></span></div>
+    </div>
+    <div id="gallery" class="masonry"></div>
+  </div>
+  <p class="text-center text-cream/35 text-sm mt-12 font-script text-2xl">Made with love, for Hama &amp; Sammy ♥</p>
+</section>
+</main>
+
+<!-- ============ SEND-TO-SAMMY MODAL ============ -->
+<div id="sendModal" class="hidden fixed inset-0 z-[160] modal-bg items-center justify-center p-4">
+  <div class="glass rounded-[2rem] max-w-lg w-full p-6 sm:p-8 relative" style="background:rgba(13,40,24,.95)">
+    <button id="sendClose" class="absolute right-4 top-4 btn btn-ghost !p-2"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="text-5xl mb-3">💐</div>
+    <h3 class="font-display text-3xl">Your gift is ready</h3>
+    <p class="text-cream/65 mt-2 text-sm">Send this private link to Sammy. When she opens it and signs in as <b>Sammy</b>, the gift box appears and she can unwrap your bouquet and love card.</p>
+    <div id="sendWarn" class="hidden mt-4 text-sm text-amber-200 bg-amber-400/10 border border-amber-300/20 rounded-xl px-4 py-3">This page is open from a file on your computer, so the link only works on this device. Publish the site first (GitHub Pages), open the published page, then press Send again.</div>
+    <input id="sendLink" readonly class="field mt-4 text-xs" />
+    <div class="grid grid-cols-2 gap-3 mt-4">
+      <button id="sendCopy" class="btn btn-gold"><i data-lucide="copy" class="w-4 h-4"></i> Copy link</button>
+      <button id="sendShare" class="btn btn-sage"><i data-lucide="share-2" class="w-4 h-4"></i> Share…</button>
+    </div>
+    <p class="text-xs text-cream/40 mt-4">If Sammy uses this same browser, she will see the gift automatically when she signs in.</p>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" class="hidden fixed inset-0 z-[150] modal-bg items-center justify-center p-4">
+  <button id="lbClose" class="absolute top-4 right-4 btn btn-ghost !p-3"><i data-lucide="x" class="w-5 h-5"></i></button>
+  <button id="lbPrev" class="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 btn btn-ghost !p-3"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+  <button id="lbNext" class="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 btn btn-ghost !p-3"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+  <figure class="max-w-4xl w-full text-center"><img id="lbImg" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl" alt="" /><figcaption class="mt-4"><div id="lbCap" class="font-script text-3xl"></div><div id="lbDate" class="text-xs tracking-widest uppercase text-cream/50 mt-1"></div></figcaption></figure>
+</div>
+
+<!-- ============ MUSIC PLAYER ============ -->
+<div id="player" class="fixed bottom-3 left-1/2 -translate-x-1/2 z-[120] w-[96%] max-w-4xl glass rounded-3xl px-3 sm:px-5 py-3 flex items-center gap-3 sm:gap-4" style="background:rgba(13,40,24,.78)">
+  <button id="playBtn" class="btn btn-gold !rounded-full !p-0 w-12 h-12 flex-none"><i data-lucide="play" class="w-5 h-5" fill="currentColor"></i></button>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center gap-2"><span id="trackName" class="font-semibold truncate">Moonlit Garden</span><span id="trackTag" class="hidden sm:inline text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-full bg-sage/50 text-cream/80">Ambient lo-fi</span></div>
+    <div class="flex items-center gap-2 mt-1.5"><span id="tCur" class="text-[10px] text-cream/50 tabular-nums w-8">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" class="slim flex-1" /><span id="tDur" class="text-[10px] text-cream/50 tabular-nums w-8 text-right">∞</span></div>
+  </div>
+  <div class="eq hidden sm:flex items-end gap-[3px] h-8 w-16 flex-none" id="eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="hidden md:flex items-center gap-2 w-28 flex-none"><i data-lucide="volume-2" class="w-4 h-4 text-cream/60"></i><input id="vol" type="range" min="0" max="100" value="60" class="slim w-full" /></div>
+  <div class="flex gap-1.5 flex-none">
+    <button id="modeBtn" class="btn btn-ghost !p-2.5" title="Switch between our song and ambient music"><i data-lucide="audio-waveform" class="w-5 h-5"></i></button>
+    <label class="btn btn-ghost !p-2.5 cursor-pointer" title="Upload your own MP3"><i data-lucide="upload" class="w-5 h-5"></i><input id="mp3Input" type="file" accept="audio/mp3,audio/mpeg,.mp3" class="hidden" /></label>
+  </div>
+  <audio id="mp3" preload="auto" loop></audio>
+</div>
+
+<script>
+/* =========================================================
+   OUR LOVE HUB  ·  Hama & Sammy
+   Vanilla JS · modular · localStorage persistence
+   ========================================================= */
+(() => {
+'use strict';
+
+/* =========================================================
+   SETTINGS you can edit
+   ========================================================= */
+const CONFIG = {
+  songFile: 'song.mp3',      // put your MP3 next to index.html with exactly this name
+  songTitle: 'Our Song',     // name shown in the music player
+  autoplayOnLogin: true      // start the song when someone signs in
+};
+
+/* ---------- 0. Core helpers ---------- */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('olh_' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('olh_' + k, JSON.stringify(v)); return true; } catch { return false; } },
+  del(k)    { try { localStorage.removeItem('olh_' + k); } catch {} }
+};
+const icons = () => { try { window.lucide && window.lucide.createIcons(); } catch {} };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+const pad = n => String(n).padStart(2, '0');
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const rand = (a, b) => a + Math.random() * (b - a);
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+function toast(msg, ms = 3200) {
+  const el = document.createElement('div');
+  el.className = 'toast glass rounded-2xl px-5 py-3 text-sm shadow-2xl text-center';
+  el.style.background = 'rgba(22,56,44,.92)';
+  el.textContent = msg;
+  $('#toasts').appendChild(el);
+  setTimeout(() => { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; setTimeout(() => el.remove(), 420); }, ms);
+}
+
+/* shared canvas shapes */
+function heartPath(c, x, y, s) {
+  c.beginPath();
+  c.moveTo(x, y + s * .3);
+  c.bezierCurveTo(x, y - s * .1, x - s * .5, y - s * .1, x - s * .5, y + s * .25);
+  c.bezierCurveTo(x - s * .5, y + s * .55, x, y + s * .75, x, y + s * .95);
+  c.bezierCurveTo(x, y + s * .75, x + s * .5, y + s * .55, x + s * .5, y + s * .25);
+  c.bezierCurveTo(x + s * .5, y - s * .1, x, y - s * .1, x, y + s * .3);
+  c.closePath();
+}
+function sparklePath(c, x, y, s) {
+  c.beginPath();
+  c.moveTo(x, y - s); c.quadraticCurveTo(x, y, x + s, y);
+  c.quadraticCurveTo(x, y, x, y + s); c.quadraticCurveTo(x, y, x - s, y);
+  c.quadraticCurveTo(x, y, x, y - s); c.closePath();
+}
+const HEART_SVG   = '<svg viewBox="0 0 24 24" fill="#ff8fab"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>';
+const SPARKLE_SVG = '<svg viewBox="0 0 24 24" fill="#dda15e"><path d="M12 1.5l2.3 6.7L21 10.5l-6.7 2.3L12 19.5l-2.3-6.7L3 10.5l6.7-2.3z"/><path d="M19 15l1 2.6 2.6 1-2.6 1L19 22.2l-1-2.6-2.6-1 2.6-1z" opacity=".8"/></svg>';
+
+
+/* ---------- 0.5 Crypto, gift-link transport & login ---------- */
+const sha256 = (() => {
+  const ror = (x, n) => (x >>> n) | (x << (32 - n));
+  const primes = []; for (let n = 2; primes.length < 64; n++) if (primes.every(p => n % p)) primes.push(n);
+  const frac = x => Math.floor((x - Math.floor(x)) * 4294967296) >>> 0;
+  const K = primes.map(p => frac(Math.cbrt(p)));
+  const H0 = primes.slice(0, 8).map(p => frac(Math.sqrt(p)));
+  return str => {
+    const bytes = new TextEncoder().encode(str), l = bytes.length, padLen = ((l + 9 + 63) >> 6) << 6;
+    const buf = new Uint8Array(padLen); buf.set(bytes); buf[l] = 0x80;
+    const dv = new DataView(buf.buffer); dv.setUint32(padLen - 4, (l * 8) >>> 0); dv.setUint32(padLen - 8, Math.floor(l * 8 / 4294967296));
+    let h = H0.slice(); const w = new Uint32Array(64);
+    for (let o = 0; o < padLen; o += 64) {
+      for (let i = 0; i < 16; i++) w[i] = dv.getUint32(o + i * 4);
+      for (let i = 16; i < 64; i++) { const a = w[i - 15], b = w[i - 2]; w[i] = (w[i - 16] + (ror(a, 7) ^ ror(a, 18) ^ (a >>> 3)) + w[i - 7] + (ror(b, 17) ^ ror(b, 19) ^ (b >>> 10))) >>> 0; }
+      let [a, b, c, d, e, f, g, hh] = h;
+      for (let i = 0; i < 64; i++) {
+        const t1 = (hh + (ror(e, 6) ^ ror(e, 11) ^ ror(e, 25)) + ((e & f) ^ (~e & g)) + K[i] + w[i]) >>> 0;
+        const t2 = ((ror(a, 2) ^ ror(a, 13) ^ ror(a, 22)) + ((a & b) ^ (a & c) ^ (b & c))) >>> 0;
+        hh = g; g = f; f = e; e = (d + t1) >>> 0; d = c; c = b; b = a; a = (t1 + t2) >>> 0;
+      }
+      h = [h[0] + a, h[1] + b, h[2] + c, h[3] + d, h[4] + e, h[5] + f, h[6] + g, h[7] + hh].map(x => x >>> 0);
+    }
+    return h.map(x => x.toString(16).padStart(8, '0')).join('');
+  };
+})();
+
+/* gift link = a small JSON payload in the URL hash, so it works on any device without a server */
+const b64e = o => { let s = ''; new TextEncoder().encode(JSON.stringify(o)).forEach(b => s += String.fromCharCode(b)); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+const b64d = t => { t = t.replace(/-/g, '+').replace(/_/g, '/'); while (t.length % 4) t += '='; return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(t), c => c.charCodeAt(0)))); };
+(function ingestGiftLink() {
+  const m = location.hash.match(/^#gift=([\w-]+)/); if (!m) return;
+  try {
+    const g = b64d(m[1]);
+    if (g && typeof g === 'object' && typeof g.id === 'number' && g.flowers && typeof g.flowers === 'object') {
+      store.set('inbox', g);
+      if (Number.isFinite(g.start) && g.start < Date.now() && g.start > Date.now() - 3650 * 864e5) store.set('start', g.start); // same "together since" for both of you
+    }
+  } catch (e) { console.warn('Gift link could not be read', e); }
+  history.replaceState(null, '', location.pathname + location.search);
+})();
+
+const Auth = (() => {
+  const USERS = {
+    hama:  { name: 'Hama',  emoji: '🌿', hash: 'a02b6d6ffbe3b384134a50263ffb1d973a4d7bcd7e3d7646a49246955d8045e0' },
+    sammy: { name: 'Sammy', emoji: '🌸', hash: 'cd2fcaeee8c55ab06d7f4d54656f31777f76a60296f8061643e0f1016d547a70' }
+  };
+  let current = null;
+  const err = msg => { const e = $('#loginErr'); e.textContent = msg || ''; e.classList.toggle('hidden', !msg); if (msg) { const f = $('#loginForm'); f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake'); } };
+
+  function apply(u, fresh) {
+    current = u;
+    document.body.dataset.user = u.name; document.body.classList.remove('locked');
+    $('#userName').textContent = u.name; $('#userEmoji').textContent = u.emoji;
+    $('#welcome').textContent = u.name === 'Hama' ? 'Welcome back, Hama ♥' : 'Welcome home, Sammy ♥';
+    const L = $('#login'); L.classList.add('hide'); setTimeout(() => { if (current) L.style.display = 'none'; }, 650);
+    scrollTo(0, 0); icons();
+    dispatchEvent(new Event('resize'));
+    document.dispatchEvent(new CustomEvent('olh:login', { detail: { user: u.name, emoji: u.emoji, fresh } }));
+  }
+  function login() {
+    const key = $('#loginUser').value.trim().toLowerCase(), pass = $('#loginPass').value, u = USERS[key];
+    const f = store.get('fails', { n: 0, until: 0 });
+    if (Date.now() < f.until) return err(`Too many tries — please wait ${Math.ceil((f.until - Date.now()) / 1000)}s.`);
+    if (!u || sha256(`olh|${key}|${pass}`) !== u.hash) {
+      f.n++; if (f.n >= 5) { f.until = Date.now() + 30000; f.n = 0; } store.set('fails', f);
+      return err('That name or password is not right. Please try again.');
+    }
+    store.set('fails', { n: 0, until: 0 }); err('');
+    if ($('#loginRemember').checked) { store.set('user', u.name); sessionStorage.removeItem('olh_user'); } else { sessionStorage.setItem('olh_user', u.name); store.del('user'); }
+    $('#loginPass').value = '';
+    apply(u, true);
+  }
+  function logout() {
+    current = null; store.del('user'); sessionStorage.removeItem('olh_user');
+    document.dispatchEvent(new CustomEvent('olh:logout'));
+    document.body.dataset.user = ''; document.body.classList.add('locked');
+    const L = $('#login'); L.style.display = ''; void L.offsetWidth; L.classList.remove('hide');
+    $('#loginUser').value = ''; $('#loginPass').value = ''; $$('.user-tab').forEach(t => t.classList.remove('sel')); err('');
+    scrollTo(0, 0);
+  }
+  function init() {
+    $('#userTabs').addEventListener('click', e => { const b = e.target.closest('[data-u]'); if (!b) return; $('#loginUser').value = b.dataset.u; $$('.user-tab').forEach(t => t.classList.toggle('sel', t === b)); $('#loginPass').focus(); });
+    $('#loginUser').addEventListener('input', e => { const v = e.target.value.trim().toLowerCase(); $$('.user-tab').forEach(t => t.classList.toggle('sel', t.dataset.u.toLowerCase() === v)); });
+    $('#passEye').addEventListener('click', () => { const i = $('#loginPass'); i.type = i.type === 'password' ? 'text' : 'password'; });
+    $('#loginForm').addEventListener('submit', e => { e.preventDefault(); login(); });
+    $('#logoutBtn').addEventListener('click', logout);
+    const saved = sessionStorage.getItem('olh_user') || store.get('user', null);
+    const u = saved && USERS[String(saved).toLowerCase()];
+    if (u) apply(u, false); else setTimeout(() => $('#loginUser').focus(), 300);
+  }
+  return { init, user: () => current && current.name };
+})();
+
+/* ---------- 1. Floating background particles ---------- */
+const FX = (() => {
+  const cv = $('#fx'), c = cv.getContext('2d');
+  let W = 0, H = 0, dpr = 1, list = [];
+  const colors = ['255,179,198', '221,161,94', '254,250,224', '255,183,3'];
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr;
+    cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px';
+  }
+  function spawn(initial) {
+    return { x: rand(0, W), y: initial ? rand(0, H) : H + 40 * dpr, s: rand(6, 20) * dpr, v: rand(.12, .45) * dpr, sw: rand(0, 6.28), sp: rand(.004, .014),
+      rot: rand(-.5, .5), type: Math.random() < .55 ? 'h' : 's', col: pick(colors), a: rand(.1, .42), tw: rand(0, 6.28) };
+  }
+  function frame() {
+    c.clearRect(0, 0, W, H);
+    for (const p of list) {
+      p.y -= p.v; p.sw += p.sp; p.tw += .03;
+      const x = p.x + Math.sin(p.sw) * 28 * dpr;
+      const a = p.a * (.65 + .35 * Math.sin(p.tw));
+      c.save(); c.translate(x, p.y); c.rotate(p.rot + Math.sin(p.sw) * .3);
+      c.fillStyle = `rgba(${p.col},${a})`; c.shadowColor = `rgba(${p.col},.8)`; c.shadowBlur = 14 * dpr;
+      p.type === 'h' ? heartPath(c, 0, -p.s / 2, p.s) : sparklePath(c, 0, 0, p.s * .7);
+      c.fill(); c.restore();
+      if (p.y < -50 * dpr) Object.assign(p, spawn(false));
+    }
+    requestAnimationFrame(frame);
+  }
+  resize(); addEventListener('resize', debounce(resize, 200));
+  const n = innerWidth < 640 ? 18 : 34;
+  for (let i = 0; i < n; i++) list.push(spawn(true));
+  frame();
+})();
+
+/* ---------- 2. Navigation, reveal & scroll-spy ---------- */
+(function initNav() {
+  $('#menuBtn').addEventListener('click', () => $('#mobileMenu').classList.toggle('hidden'));
+  $$('#mobileMenu a').forEach(a => a.addEventListener('click', () => $('#mobileMenu').classList.add('hidden')));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .08 });
+  $$('.reveal').forEach(el => io.observe(el));
+  const links = $$('#navLinks a');
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  $$('main > section').forEach(s => spy.observe(s));
+})();
+
+/* ---------- 3. Live relationship counter ---------- */
+const Counter = (() => {
+  const BASE_MS = ((48 * 24 + 1) * 60 + 40) * 60 * 1000; // 48 days, 1 hour, 40 minutes
+  let startTs = store.get('start', null);
+  if (!startTs || isNaN(startTs)) { startTs = Date.now() - BASE_MS; store.set('start', startTs); }
+
+  const MILESTONES = [7, 14, 30, 50, 60, 75, 100, 150, 200, 250, 365, 500, 730, 1000];
+  const QUOTES = [
+    'You are my favourite place to be.', 'With you, ordinary days turn golden.', 'My heart found its home in you.',
+    'Every moment with you is my new favourite.', 'You make the whole world softer.', 'Two hearts, one beautiful story.',
+    'Wherever you are is where I want to be.', 'You are my today and all of my tomorrows.', 'Loving you is the easiest thing I do.',
+    'In a sea of people, my eyes will always search for you.'
+  ];
+  const cache = {};
+  const set = (id, v) => {
+    const el = $('#' + id); if (!el) return;
+    if (cache[id] !== v) { el.textContent = v; cache[id] = v; el.classList.remove('num-pop'); void el.offsetWidth; el.classList.add('num-pop'); }
+  };
+  let chipKey = '';
+  const fmtRemain = ms => { const d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4); return `${d}d ${h}h ${m}m`; };
+
+  function tick() {
+    const diff = Math.max(0, Date.now() - startTs);
+    const total = Math.floor(diff / 1000);
+    const d = Math.floor(total / 86400), h = Math.floor(total % 86400 / 3600), m = Math.floor(total % 3600 / 60), s = total % 60;
+    set('cDays', pad(d)); set('cHours', pad(h)); set('cMinutes', pad(m)); set('cSeconds', pad(s));
+    $('#sHours').textContent = Math.floor(diff / 36e5).toLocaleString();
+    $('#sMinutes').textContent = Math.floor(diff / 6e4).toLocaleString();
+    const fracDays = diff / 864e5;
+    const next = MILESTONES.find(x => x > fracDays) || null;
+    const prev = [...MILESTONES].reverse().find(x => x <= fracDays) || 0;
+    if (next) {
+      const pct = clamp((fracDays - prev) / (next - prev) * 100, 0, 100);
+      $('#msBar').style.width = pct.toFixed(2) + '%';
+      $('#msLabel').textContent = `Day ${next} · in ${fmtRemain(next * 864e5 - diff)}`;
+    } else { $('#msBar').style.width = '100%'; $('#msLabel').textContent = 'Every milestone reached 💚'; }
+    const key = String(MILESTONES.filter(x => x <= fracDays).length);
+    if (key !== chipKey) {
+      chipKey = key;
+      $('#msChips').innerHTML = MILESTONES.map(x => {
+        const on = x <= fracDays;
+        return `<span class="px-3 py-1.5 rounded-full text-xs font-semibold border ${on ? 'bg-gold/90 text-forest border-gold' : 'bg-white/5 border-white/10 text-cream/45'}">${on ? '♥ ' : ''}${x >= 365 ? (x / 365).toFixed(x % 365 ? 1 : 0) + ' yr' : x + ' days'}</span>`;
+      }).join('');
+    }
+  }
+  function renderSince() {
+    $('#sSince').textContent = new Date(startTs).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function toLocalInput(ts) { const o = new Date(ts); return new Date(ts - o.getTimezoneOffset() * 6e4).toISOString().slice(0, 16); }
+  function init() {
+    tick(); renderSince(); setInterval(tick, 1000);
+    let qi = Math.floor(Math.random() * QUOTES.length);
+    const q = $('#quote'); q.textContent = QUOTES[qi];
+    setInterval(() => { q.style.opacity = 0; setTimeout(() => { qi = (qi + 1) % QUOTES.length; q.textContent = QUOTES[qi]; q.style.opacity = 1; }, 700); }, 7000);
+    $('#adjustBtn').addEventListener('click', () => { $('#startInput').value = toLocalInput(startTs); $('#adjustPanel').classList.toggle('hidden'); });
+    $('#startSave').addEventListener('click', () => {
+      const t = new Date($('#startInput').value).getTime();
+      if (isNaN(t) || t > Date.now()) return toast('Pick a start time in the past ♥');
+      startTs = t; store.set('start', t); chipKey = ''; tick(); renderSince(); $('#adjustPanel').classList.add('hidden'); toast('Our start time was updated');
+    });
+    $('#startReset').addEventListener('click', () => { startTs = Date.now() - BASE_MS; store.set('start', startTs); chipKey = ''; tick(); renderSince(); $('#adjustPanel').classList.add('hidden'); toast('Back to 48 days, 1 hour, 40 minutes'); });
+  }
+  return { init };
+})();
+
+/* ---------- 4. Bouquet Studio ---------- */
+const FLOWERS = [
+  { id: 'rose',       name: 'Red Roses',    blurb: 'Passion' },
+  { id: 'tulip',      name: 'White Tulips', blurb: 'Pure heart' },
+  { id: 'sunflower',  name: 'Sunflowers',   blurb: 'Pure joy' },
+  { id: 'lily',       name: 'Pink Lilies',  blurb: 'Devotion' },
+  { id: 'orchid',     name: 'Orchids',      blurb: 'Rare beauty' },
+  { id: 'lavender',   name: 'Lavender',     blurb: 'Calm & peace' },
+  { id: 'eucalyptus', name: 'Eucalyptus',   blurb: 'Fresh start' }
+];
+const WRAPPERS = {
+  kraft:  { name: 'Kraft Paper',       c1: '#d9b184', c2: '#b78552' },
+  vintage:{ name: 'Vintage Rose',      c1: '#f3bccb', c2: '#d4849e' },
+  forest: { name: 'Dark Forest Green', c1: '#2b6a4d', c2: '#10331f' },
+  silk:   { name: 'Sheer Gold Silk',   c1: '#fbe6ae', c2: '#d8a64e' }
+};
+const RIBBONS = {
+  gold:    { name: 'Gold Satin',   c: '#ecb94f', d: '#a8741f' },
+  crimson: { name: 'Crimson Silk', c: '#cc1a2b', d: '#7a0a16' },
+  emerald: { name: 'Emerald Green',c: '#22a874', d: '#0b5a3b' },
+  pink:    { name: 'Velvet Pink',  c: '#f0679a', d: '#a52d5b' }
+};
+const MAX_STEMS = 18;
+
+const HEAD = {
+  rose: () => `<circle r="31" fill="#86091f"/>` +
+    [0, 72, 144, 216, 288].map(a => `<circle cx="${(Math.cos(a * Math.PI / 180) * 21).toFixed(1)}" cy="${(Math.sin(a * Math.PI / 180) * 21).toFixed(1)}" r="13" fill="#ad1029"/>`).join('') +
+    `<circle r="21" fill="#c8182f"/><circle r="14" fill="#dd3046"/>` +
+    `<path d="M-9 1C-9-9 9-9 9 0 9 7 0 9-4 5" fill="none" stroke="#86091f" stroke-width="2" stroke-linecap="round"/><path d="M-3-2C-3-5 3-5 3-1" fill="none" stroke="#86091f" stroke-width="1.6" stroke-linecap="round"/>` +
+    `<path d="M-22-11C-14-26 6-28 18-18" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2.5" stroke-linecap="round"/>`,
+  tulip: () => `<g transform="translate(0 8)"><path d="M-17-4C-19-24-9-34-3-40-4-26 4-8 2 14-10 14-17 6-17-4Z" fill="#ece8dc"/><path d="M17-4C19-24 9-34 3-40 4-26-4-8-2 14 10 14 17 6 17-4Z" fill="#f1ede2"/><path d="M-12-2C-12-22-4-34 0-42 4-34 12-22 12-2 12 12 4 18 0 18-4 18-12 12-12-2Z" fill="#fffdf6" stroke="#e1dac8" stroke-width=".9"/><path d="M0-36C-2-20-2-4 0 14" fill="none" stroke="#e6dfcd" stroke-width="1"/><path d="M-9 8C-4 13 4 13 9 8" fill="none" stroke="#f6c6d0" stroke-width="2" stroke-linecap="round" opacity=".7"/></g>`,
+  sunflower: () => `<g transform="scale(.82)">` +
+    Array.from({ length: 16 }, (_, i) => `<ellipse cx="0" cy="-27" rx="7" ry="16" fill="${i % 2 ? '#ffb703' : '#ffc93c'}" transform="rotate(${i * 22.5})"/>`).join('') +
+    Array.from({ length: 16 }, (_, i) => `<ellipse cx="0" cy="-22" rx="6" ry="12" fill="#f89b0a" transform="rotate(${i * 22.5 + 11.25})"/>`).join('') +
+    `<circle r="14" fill="#4a2c12"/><circle r="10" fill="#6b3f1a"/>` +
+    Array.from({ length: 22 }, (_, i) => { const a = i * 2.39996, r = 1.9 * Math.sqrt(i + 1); return `<circle cx="${(Math.cos(a) * r).toFixed(1)}" cy="${(Math.sin(a) * r).toFixed(1)}" r="1" fill="#2b1708"/>`; }).join('') + `</g>`,
+  lily: () => Array.from({ length: 6 }, (_, i) => `<path d="M0 0C-10-10-9-28 0-38 9-28 10-10 0 0Z" fill="${i % 2 ? '#ffb3c6' : '#ff8fab'}" stroke="#e0527a" stroke-width=".7" transform="rotate(${i * 60 + (i % 2 ? 0 : 0)})"/>`).join('') +
+    Array.from({ length: 6 }, (_, i) => `<path d="M0-4L0-30" stroke="#e0527a" stroke-width=".8" opacity=".6" transform="rotate(${i * 60})"/>`).join('') +
+    Array.from({ length: 5 }, (_, i) => `<g transform="rotate(${i * 72 + 15})"><path d="M0 0L0-15" stroke="#c9356b" stroke-width="1.2"/><ellipse cy="-17" rx="2.2" ry="4" fill="#ffb703"/></g>`).join('') + `<circle r="3" fill="#fff0f5"/>`,
+  orchid: () => `<ellipse cx="-11" cy="15" rx="7" ry="18" fill="#e0aaff" transform="rotate(25 -11 15)"/><ellipse cx="11" cy="15" rx="7" ry="18" fill="#e0aaff" transform="rotate(-25 11 15)"/>` +
+    `<ellipse cx="0" cy="-18" rx="13" ry="20" fill="#d9a0ff"/><ellipse cx="-21" cy="-3" rx="19" ry="14" fill="#c77dff" transform="rotate(-18 -21 -3)"/><ellipse cx="21" cy="-3" rx="19" ry="14" fill="#c77dff" transform="rotate(18 21 -3)"/>` +
+    `<path d="M-9 2C-12 12-6 20 0 20 6 20 12 12 9 2 5 6-5 6-9 2Z" fill="#ff9ecd"/><circle cx="-3" cy="12" r="1.5" fill="#ffb703"/><circle cx="3" cy="14" r="1.5" fill="#ffb703"/><circle cx="0" cy="9" r="1.3" fill="#ffb703"/><circle cy="-2" r="4.5" fill="#fff4fb"/>` +
+    `<path d="M-30-6C-22-12-14-10-10-3M30-6C22-12 14-10 10-3" fill="none" stroke="#a45bd9" stroke-width="1" opacity=".5"/>`,
+  lavender: () => `<path d="M0 34L0-20" stroke="#6a8f5c" stroke-width="2.4" stroke-linecap="round"/>` +
+    Array.from({ length: 10 }, (_, i) => { const y = 24 - i * 7.2, w = 4.4 - i * .18, col = i % 2 ? '#8e5bd8' : '#a777e8'; return `<ellipse cx="${-w}" cy="${y}" rx="4.2" ry="6.4" fill="${col}" transform="rotate(-24 ${-w} ${y})"/><ellipse cx="${w}" cy="${y}" rx="4.2" ry="6.4" fill="${i % 2 ? '#a777e8' : '#8e5bd8'}" transform="rotate(24 ${w} ${y})"/>`; }).join('') +
+    `<ellipse cy="-52" rx="3.4" ry="6" fill="#b891f0"/>`,
+  eucalyptus: () => `<path d="M0 34C-5 8 5-20 3-46" fill="none" stroke="#6b9080" stroke-width="2.6" stroke-linecap="round"/>` +
+    Array.from({ length: 6 }, (_, i) => { const y = 24 - i * 12.5, x = (i % 2 ? 1 : -1) * (10 - i * .6), r = 8.2 - i * .55; return `<circle cx="${x}" cy="${y}" r="${r}" fill="${i % 2 ? '#8fb8a0' : '#a9c9b5'}" stroke="#6b9080" stroke-width=".6"/><path d="M${x * .3} ${y}L${x} ${y}" stroke="#6b9080" stroke-width=".7"/><circle cx="${-x}" cy="${y - 5}" r="${r * .85}" fill="${i % 2 ? '#a9c9b5' : '#8fb8a0'}" stroke="#6b9080" stroke-width=".6"/>`; }).join('') +
+    `<circle cx="3" cy="-48" r="5" fill="#a9c9b5" stroke="#6b9080" stroke-width=".6"/>`
+};
+
+let bq = store.get('bouquet', null) || {
+  flowers: { rose: 3, tulip: 2, lily: 1, eucalyptus: 1 }, wrapper: 'forest', ribbon: 'gold',
+  note: 'Sammy,\nEvery single day with you feels like a beautiful beginning. These flowers are only a small way of saying how much you mean to me.'
+};
+if (!bq.flowers) bq.flowers = {};
+const totalStems = () => Object.values(bq.flowers).reduce((a, b) => a + b, 0);
+
+function bouquetSVG(st, uid, animTarget) {
+  // mix stems round-robin so different flowers sit side by side
+  const per = FLOWERS.map(f => Array(st.flowers[f.id] || 0).fill(f.id));
+  const stems = [];
+  for (let i = 0; per.some(a => i < a.length); i++) per.forEach(a => { if (i < a.length) stems.push(a[i]); });
+  const wr = WRAPPERS[st.wrapper] || WRAPPERS.forest, rb = RIBBONS[st.ribbon] || RIBBONS.gold;
+  const layerOrder = [1, 0, 2], R = [168, 130, 94], SP = [94, 72, 44];
+  const layers = [[], [], []];
+  stems.forEach((id, i) => layers[layerOrder[i % 3]].push(id));
+
+  let leaves = '', back = '', stemSvg = '', heads = '';
+  [-64, -46, -28, 28, 46, 64, -10, 10].forEach((a, i) => {
+    const len = 150 + (i % 3) * 18;
+    leaves += `<path d="M0 0C-24 -40 -22 ${-len * .7} 0 ${-len}C22 ${-len * .7} 24 -40 0 0Z" transform="translate(200 332) rotate(${a})" fill="${['#2d6a4f', '#3a7d5c', '#1f5a40'][i % 3]}"/><path d="M0-4L0-${len - 14}" stroke="rgba(255,255,255,.16)" stroke-width="1.2" transform="translate(200 332) rotate(${a})"/>`;
+  });
+  back = `<path d="M52 252Q200 205 348 252L252 446H148Z" fill="${wr.c2}" opacity=".92"/><path d="M52 252Q200 205 348 252" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/>`;
+
+  let k = 0;
+  [0, 1, 2].forEach(li => {
+    const arr = layers[li], c = arr.length;
+    arr.forEach((id, j) => {
+      const a = c === 1 ? (li - 1) * 20 : (j / (c - 1) - .5) * SP[li];
+      const rad = a * Math.PI / 180;
+      const x = 200 + R[li] * Math.sin(rad), y = 332 - R[li] * Math.cos(rad) * .92;
+      const bx = 200 + Math.sin(rad) * 16, by = 340;
+      stemSvg += `<path d="M${bx.toFixed(1)} ${by}Q${(bx + (x - bx) * .15).toFixed(1)} ${(y + (by - y) * .5).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)}" fill="none" stroke="${id === 'lavender' ? '#6a8f5c' : '#3b7d4f'}" stroke-width="4" stroke-linecap="round"/>`;
+      const rot = (a * .5 + ((k * 47) % 30 - 15)).toFixed(1);
+      const sc = (stems.length > 12 ? 1 : stems.length > 7 ? 1.15 : 1.3) * (id === 'lavender' || id === 'eucalyptus' ? 1.05 : 1);
+      const doAnim = animTarget === 'all' || animTarget === id;
+      const delay = animTarget === 'all' ? 120 + k * 90 : 0;
+      heads += `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot}) scale(${sc})"><g ${doAnim ? `class="bloom" style="animation-delay:${delay}ms"` : ''}>${HEAD[id]()}</g></g>`;
+      k++;
+    });
+  });
+  if (!stems.length) { // greenery only
+    heads = `<g transform="translate(200 210)">${HEAD.eucalyptus()}</g><g transform="translate(150 240) rotate(-25)">${HEAD.eucalyptus()}</g><g transform="translate(250 240) rotate(25)">${HEAD.eucalyptus()}</g>`;
+  }
+
+  const wp = `wp${uid}`, wcl = `wcl${uid}`, wg = `wg${uid}`;
+  const wrapperPath = 'M62 288Q200 345 338 288L238 446Q200 456 162 446Z';
+  let pattern = '';
+  if (st.wrapper === 'kraft') pattern = `<pattern id="${wp}" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M0 6L26 4M0 18L26 21M7 0L5 26" stroke="#8a5a2b" stroke-width=".8" opacity=".3"/></pattern>`;
+  if (st.wrapper === 'vintage') pattern = `<pattern id="${wp}" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="2.4" fill="#fff" opacity=".5"/><circle cx="17" cy="17" r="1.6" fill="#a94468" opacity=".45"/></pattern>`;
+  if (st.wrapper === 'forest') pattern = `<pattern id="${wp}" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 4L11.2 8.8 16 10 11.2 11.2 10 16 8.8 11.2 4 10 8.8 8.8Z" fill="#dda15e" opacity=".6"/></pattern>`;
+  if (st.wrapper === 'silk') pattern = `<pattern id="${wp}" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(32)"><rect width="14" height="40" fill="#fff" opacity=".22"/></pattern>`;
+
+  const bow = `
+    <path d="M100 348Q200 400 300 348L288 372Q200 424 112 372Z" fill="${rb.c}" stroke="${rb.d}" stroke-width="1.2"/>
+    <path d="M100 348Q200 400 300 348" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.8"/>
+    <path d="M198 392C150 352 116 376 136 402 150 418 182 404 198 392Z" fill="${rb.c}" stroke="${rb.d}" stroke-width="1.3"/>
+    <path d="M202 392C250 352 284 376 264 402 250 418 218 404 202 392Z" fill="${rb.c}" stroke="${rb.d}" stroke-width="1.3"/>
+    <path d="M190 396L168 446 186 440 194 458 206 404Z" fill="${rb.c}" stroke="${rb.d}" stroke-width="1.3"/>
+    <path d="M210 396L232 446 214 440 206 458 194 404Z" fill="${rb.d}" stroke="${rb.d}" stroke-width="1.3" opacity=".92"/>
+    <path d="M140 392C150 384 164 386 180 394M260 392C250 384 236 386 220 394" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.4"/>
+    <ellipse cx="200" cy="394" rx="12" ry="10" fill="${rb.c}" stroke="${rb.d}" stroke-width="1.3"/><ellipse cx="197" cy="391" rx="5" ry="3.5" fill="rgba(255,255,255,.45)"/>`;
+
+  const spark = [[60, 150, 0], [345, 130, 1.2], [28, 290, .6], [374, 280, 1.8], [200, 80, .9]].map(([x, y, d]) =>
+    `<path d="M${x} ${y - 9}Q${x} ${y} ${x + 9} ${y}Q${x} ${y} ${x} ${y + 9}Q${x} ${y} ${x - 9} ${y}Q${x} ${y} ${x} ${y - 9}Z" fill="#ffe3b3"><animate attributeName="opacity" values="0;1;0" dur="3s" begin="${d}s" repeatCount="indefinite"/></path>`).join('');
+
+  return `<svg viewBox="0 55 400 415" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bouquet design" class="w-full h-auto overflow-visible">
+    <defs>
+      <linearGradient id="${wg}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${wr.c1}"/><stop offset="1" stop-color="${wr.c2}"/></linearGradient>
+      ${pattern}<clipPath id="${wcl}"><path d="${wrapperPath}"/></clipPath>
+      <filter id="sh${uid}" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity=".45"/></filter>
+    </defs>
+    <g filter="url(#sh${uid})">${leaves}${back}${stemSvg}${heads}</g>
+    <g filter="url(#sh${uid})" ${st.wrapper === 'silk' ? 'opacity=".93"' : ''}>
+      <path d="${wrapperPath}" fill="url(#${wg})"/>
+      ${pattern ? `<rect width="400" height="470" fill="url(#${wp})" clip-path="url(#${wcl})"/>` : ''}
+      <g clip-path="url(#${wcl})"><path d="M62 288Q130 330 200 345L165 446H130Z" fill="#fff" opacity=".13"/><path d="M338 288Q270 330 200 345L238 446H280Z" fill="#000" opacity=".16"/><path d="M200 345L200 456" stroke="rgba(0,0,0,.14)" stroke-width="1.5"/></g>
+      <path d="M62 288Q200 345 338 288" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.5"/>
+    </g>
+    <g filter="url(#sh${uid})">${bow}</g>${spark}</svg>`;
+}
+
+const Bouquet = (() => {
+  let lastAdded = 'all';
+  const save = debounce(() => store.set('bouquet', bq), 250);
+
+  function flowerCards() {
+    $('#flowerGrid').innerHTML = FLOWERS.map(f => {
+      const n = bq.flowers[f.id] || 0;
+      return `<div class="flower-card glass-soft rounded-2xl p-3 cursor-pointer text-center ${n ? 'has' : ''}" data-add="${f.id}">
+        <svg viewBox="-48 -58 96 100" class="w-20 h-20 mx-auto" aria-hidden="true">${HEAD[f.id]()}</svg>
+        <div class="font-semibold text-sm mt-1">${f.name}</div><div class="text-[11px] text-cream/50">${f.blurb}</div>
+        <div class="flex items-center justify-center gap-3 mt-2">
+          <button data-sub="${f.id}" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 ${n ? '' : 'opacity-30 pointer-events-none'}" aria-label="Remove one ${f.name}">−</button>
+          <span class="font-display text-lg w-5 tabular-nums">${n}</span>
+          <button data-plus="${f.id}" class="w-7 h-7 rounded-full bg-gold text-forest font-bold" aria-label="Add one ${f.name}">+</button>
+        </div></div>`;
+    }).join('');
+    $('#stemCount').textContent = `${totalStems()} / ${MAX_STEMS} stems`;
+  }
+  function wrapperCards() {
+    $('#wrapperGrid').innerHTML = Object.entries(WRAPPERS).map(([k, w]) => `
+      <button data-wrap="${k}" class="swatch glass-soft rounded-2xl p-3 text-center ${bq.wrapper === k ? 'sel' : ''}">
+        <svg viewBox="0 0 80 62" class="w-16 h-12 mx-auto"><defs><linearGradient id="mw${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${w.c1}"/><stop offset="1" stop-color="${w.c2}"/></linearGradient></defs><path d="M6 6Q40 28 74 6L52 58Q40 61 28 58Z" fill="url(#mw${k})"/><path d="M6 6Q40 28 74 6" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none"/></svg>
+        <div class="text-xs font-semibold mt-1.5">${w.name}</div></button>`).join('');
+  }
+  function ribbonCards() {
+    $('#ribbonGrid').innerHTML = Object.entries(RIBBONS).map(([k, r]) => `
+      <button data-rib="${k}" class="swatch glass-soft rounded-2xl p-3 text-center ${bq.ribbon === k ? 'sel' : ''}">
+        <svg viewBox="0 0 80 50" class="w-16 h-10 mx-auto"><path d="M40 28C20 8 6 24 16 36 24 44 36 36 40 28Z" fill="${r.c}" stroke="${r.d}"/><path d="M40 28C60 8 74 24 64 36 56 44 44 36 40 28Z" fill="${r.c}" stroke="${r.d}"/><path d="M36 30L26 49 36 46 40 50 44 32Z" fill="${r.d}"/><circle cx="40" cy="29" r="6" fill="${r.c}" stroke="${r.d}"/></svg>
+        <div class="text-xs font-semibold mt-1.5">${r.name}</div></button>`).join('');
+  }
+  function preview() {
+    $('#bqPreview').innerHTML = bouquetSVG(bq, 'pv', lastAdded);
+    lastAdded = null;
+    const chips = FLOWERS.filter(f => bq.flowers[f.id]).map(f => `<span class="px-3 py-1 rounded-full bg-white/10">${bq.flowers[f.id]}× ${f.name}</span>`);
+    chips.push(`<span class="px-3 py-1 rounded-full bg-gold/20 text-gold">${WRAPPERS[bq.wrapper].name}</span>`, `<span class="px-3 py-1 rounded-full bg-blush/20 text-blush">${RIBBONS[bq.ribbon].name}</span>`);
+    $('#bqSummary').innerHTML = chips.join('');
+  }
+  function renderAll(target) { lastAdded = target || null; flowerCards(); wrapperCards(); ribbonCards(); preview(); icons(); }
+
+  function init() {
+    $('#bqNote').value = bq.note || ''; $('#bqCount').textContent = `${(bq.note || '').length}/400`;
+    renderAll('all');
+    $('#flowerGrid').addEventListener('click', e => {
+      const plus = e.target.closest('[data-plus],[data-add]'), sub = e.target.closest('[data-sub]');
+      if (sub) { const id = sub.dataset.sub; bq.flowers[id] = Math.max(0, (bq.flowers[id] || 0) - 1); if (!bq.flowers[id]) delete bq.flowers[id]; save(); renderAll(null); return; }
+      if (plus) {
+        const id = plus.dataset.plus || plus.dataset.add;
+        if (totalStems() >= MAX_STEMS) return toast(`That's a full bouquet — ${MAX_STEMS} stems max 💐`);
+        bq.flowers[id] = (bq.flowers[id] || 0) + 1; save(); renderAll(id);
+      }
+    });
+    $('#wrapperGrid').addEventListener('click', e => { const b = e.target.closest('[data-wrap]'); if (b) { bq.wrapper = b.dataset.wrap; save(); renderAll(null); } });
+    $('#ribbonGrid').addEventListener('click', e => { const b = e.target.closest('[data-rib]'); if (b) { bq.ribbon = b.dataset.rib; save(); renderAll(null); } });
+    $('#bqNote').addEventListener('input', e => { bq.note = e.target.value; $('#bqCount').textContent = `${bq.note.length}/400`; save(); });
+    $('#bqRandom').addEventListener('click', () => {
+      bq.flowers = {}; const ids = FLOWERS.map(f => f.id).sort(() => Math.random() - .5).slice(0, 3 + Math.floor(Math.random() * 3));
+      ids.forEach(id => bq.flowers[id] = 1 + Math.floor(Math.random() * 3));
+      bq.wrapper = pick(Object.keys(WRAPPERS)); bq.ribbon = pick(Object.keys(RIBBONS)); save(); renderAll('all');
+    });
+    $('#bqClear').addEventListener('click', () => { bq.flowers = {}; save(); renderAll(null); });
+    $('#bqSave').addEventListener('click', () => { store.set('bouquet', bq); toast('Bouquet saved for Sammy 💐'); });
+    $('#bqGift').addEventListener('click', () => { store.set('bouquet', bq); Share.send(); });
+    $('#bqPreview2').addEventListener('click', () => { store.set('bouquet', bq); Gate.open(Share.payload(), { preview: true }); });
+  }
+  return { init };
+})();
+
+/* ---------- 5. Sending the gift (Hama) ---------- */
+const Share = (() => {
+  const payload = () => ({ id: Date.now(), from: 'Hama', flowers: { ...bq.flowers }, wrapper: bq.wrapper, ribbon: bq.ribbon, note: bq.note || '', start: store.get('start', null), ts: Date.now() });
+  const link = p => (location.protocol === 'file:' ? location.href.split('#')[0] : location.origin + location.pathname) + '#gift=' + b64e(p);
+  function send() {
+    if (!totalStems()) return toast('Add at least one flower before sending 💐');
+    const p = payload(); store.set('inbox', p); store.set('sent', { id: p.id, ts: p.ts });
+    $('#sendLink').value = link(p); $('#sendWarn').classList.toggle('hidden', location.protocol !== 'file:');
+    const m = $('#sendModal'); m.classList.remove('hidden'); m.classList.add('flex'); icons(); sentInfo();
+  }
+  function sentInfo() {
+    const s = store.get('sent', null), el = $('#sentInfo'); if (!el) return;
+    el.classList.toggle('hidden', !s); if (s) el.textContent = `Last gift sent ${new Date(s.ts).toLocaleString(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}`;
+  }
+  const closeM = () => { const m = $('#sendModal'); m.classList.add('hidden'); m.classList.remove('flex'); };
+  function init() {
+    sentInfo();
+    $('#sendClose').addEventListener('click', closeM);
+    $('#sendModal').addEventListener('click', e => { if (e.target.id === 'sendModal') closeM(); });
+    $('#sendCopy').addEventListener('click', async () => {
+      const v = $('#sendLink').value;
+      try { await navigator.clipboard.writeText(v); } catch { $('#sendLink').select(); document.execCommand('copy'); }
+      toast('Link copied — send it to Sammy 💌');
+    });
+    $('#sendShare').addEventListener('click', async () => {
+      const v = $('#sendLink').value;
+      if (navigator.share) { try { await navigator.share({ title: 'A gift for you 💐', text: 'Hama made something for you…', url: v }); } catch {} }
+      else { try { await navigator.clipboard.writeText(v); } catch {} toast('Sharing is not available here — the link was copied instead.'); }
+    });
+  }
+  return { init, payload, send };
+})();
+
+/* ---------- 6. Sammy's gift-opening gate (shown only to Sammy, only when a gift exists) ---------- */
+const Gate = (() => {
+  const gate = $('#gate'), box = $('#giftBox');
+  const cv = $('#confetti'), cx = cv.getContext('2d');
+  let parts = [], raf = 0, current = null, preview = false;
+
+  function clean(g) { // never trust data that arrived through a link
+    const fl = {}; FLOWERS.forEach(f => { const n = Math.floor(Number(g.flowers?.[f.id])); if (n > 0) fl[f.id] = Math.min(n, MAX_STEMS); });
+    return { id: g.id, flowers: fl, wrapper: WRAPPERS[g.wrapper] ? g.wrapper : 'forest', ribbon: RIBBONS[g.ribbon] ? g.ribbon : 'gold', note: String(g.note || '').slice(0, 400), from: 'Hama', ts: g.ts };
+  }
+  const stems = g => Object.values(g.flowers).reduce((a, b) => a + b, 0);
+
+  function sizeCv() { cv.width = innerWidth; cv.height = innerHeight; }
+  function burst() {
+    sizeCv();
+    const colors = ['#ffb3c6', '#dda15e', '#fefae0', '#ffb703', '#2d6a4f', '#ff8fab'];
+    for (let i = 0; i < 170; i++) {
+      const a = rand(-Math.PI * .95, -Math.PI * .05), v = rand(6, 17);
+      parts.push({ x: innerWidth / 2, y: innerHeight * .5, vx: Math.cos(a) * v, vy: Math.sin(a) * v, g: rand(.14, .28), s: rand(7, 15), r: rand(0, 6.28), vr: rand(-.2, .2), col: pick(colors), t: Math.random() < .4 ? 'h' : Math.random() < .5 ? 'r' : 's', life: 1 });
+    }
+    if (!raf) loop();
+  }
+  function loop() {
+    cx.clearRect(0, 0, cv.width, cv.height);
+    parts.forEach(p => {
+      p.vy += p.g; p.vx *= .992; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life -= .004;
+      cx.save(); cx.globalAlpha = clamp(p.life, 0, 1); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.col;
+      if (p.t === 'h') { heartPath(cx, 0, -p.s / 2, p.s); cx.fill(); } else if (p.t === 's') { sparklePath(cx, 0, 0, p.s * .7); cx.fill(); } else cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+      cx.restore();
+    });
+    parts = parts.filter(p => p.life > 0 && p.y < cv.height + 40);
+    if (parts.length) raf = requestAnimationFrame(loop); else { raf = 0; cx.clearRect(0, 0, cv.width, cv.height); }
+  }
+
+  function reset() {
+    box.classList.remove('opened');
+    $('#gateStage').classList.remove('hidden'); $('#gateStage').style.opacity = 1;
+    $('#gateReveal').classList.add('hidden'); $('#unwrapBtn').disabled = false;
+  }
+  function open(g, opts = {}) {
+    if (!g) return;
+    current = clean(g); preview = !!opts.preview; reset();
+    $('#gateEyebrow').textContent = preview ? 'Preview · how Sammy will see it' : 'A gift from Hama · for Sammy';
+    $('#enterHubTxt').textContent = preview ? 'Back to the studio' : 'Enter Our Love Hub';
+    $('#skipGate').textContent = preview ? 'Close preview' : 'Open it later';
+    $('#previewBadge').classList.toggle('hidden', !preview);
+    gate.style.display = ''; void gate.offsetWidth; gate.classList.remove('hide');
+    document.body.style.overflow = 'hidden'; gate.scrollTop = 0; icons();
+  }
+  function close() {
+    gate.classList.add('hide'); document.body.style.overflow = '';
+    setTimeout(() => { if (gate.classList.contains('hide')) gate.style.display = 'none'; }, 900);
+  }
+  function unwrap() {
+    if (box.classList.contains('opened') || !current) return;
+    $('#unwrapBtn').disabled = true; box.classList.add('opened'); burst(); setTimeout(burst, 650);
+    if (!preview && Auth.user() === 'Sammy') { store.set('inboxSeen', current.id); }
+    setTimeout(() => {
+      $('#gateStage').style.transition = 'opacity .6s'; $('#gateStage').style.opacity = 0;
+      setTimeout(() => {
+        $('#gateStage').classList.add('hidden');
+        $('#revealBouquet').innerHTML = bouquetSVG(current, 'rv', 'all');
+        $('#revealTo').textContent = 'Dear Sammy,';
+        $('#revealNote').textContent = current.note || 'Made with all my love, just for you.';
+        $('#revealMeta').textContent = `${stems(current)} stems · ${WRAPPERS[current.wrapper].name} · ${RIBBONS[current.ribbon].name} ribbon`;
+        $('#gateReveal').classList.remove('hidden'); icons(); gate.scrollTop = 0;
+        setTimeout(burst, 500);
+      }, 600);
+    }, 1700);
+  }
+  /* Sammy signs in -> if Hama sent a gift she has not opened yet, show the gift box */
+  function onLogin(e) {
+    const isSammy = e.detail.user === 'Sammy', g = store.get('inbox', null);
+    const rb = $('#replayGift'); rb.style.display = isSammy && g ? '' : 'none';
+    if (isSammy && g && g.id !== store.get('inboxSeen', null)) setTimeout(() => open(g), e.detail.fresh ? 700 : 350);
+  }
+  function init() {
+    $('#unwrapBtn').addEventListener('click', unwrap);
+    box.addEventListener('click', unwrap);
+    $('#skipGate').addEventListener('click', close);
+    $('#enterHub').addEventListener('click', close);
+    $('#replayGift').addEventListener('click', () => open(store.get('inbox', null)));
+    $('#replayGift').style.display = 'none';
+    document.addEventListener('olh:login', onLogin);
+    document.addEventListener('olh:logout', () => { close(); gate.style.display = 'none'; document.body.style.overflow = ''; });
+    addEventListener('resize', () => { if (parts.length) sizeCv(); });
+  }
+  return { init, open, close };
+})();
+
+/* ---------- 6. Infinite Drawing Board ---------- */
+const Board = (() => {
+  const cv = $('#board'), c = cv.getContext('2d'), wrap = $('#boardWrap');
+  const layer = document.createElement('canvas'), lc = layer.getContext('2d');
+  const BG = {
+    paper: { base: '#fbf5dc', dot: 'rgba(120,90,40,.24)', ink: 'rgba(120,90,40,.4)' },
+    chalk: { base: '#1d3a2c', dot: 'rgba(255,255,255,.14)', ink: 'rgba(255,255,255,.35)' },
+    night: { base: '#0b1236', dot: 'rgba(255,255,255,.16)', ink: 'rgba(255,255,255,.4)' }
+  };
+  const PALETTE = ['#c1121f', '#ff6b9a', '#ff9e00', '#ffd23f', '#2d6a4f', '#2ec4b6', '#3a86ff', '#7b2cbf', '#1b1b1b', '#ffffff'];
+  const saved = store.get('draw', null);
+  let strokes = saved?.strokes || [], view = saved?.view || null, bg = saved?.bg || 'paper';
+  let redo = [], tool = 'brush', cur = null, spaceDown = false, hover = false, dpr = 1, W = 0, H = 0, raf = 0;
+  const pointers = new Map(); let pan = null, pinch = null;
+
+  const toWorld = p => ({ x: (p.x - view.x) / view.k, y: (p.y - view.y) / view.k });
+  const pos = e => { const r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  const schedule = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; render(); }); };
+  const persist = debounce(() => {
+    if (!store.set('draw', { strokes, view, bg })) toast('Browser storage is full — download your drawing as PNG to keep it 💾');
+  }, 450);
+
+  function resize() {
+    const r = wrap.getBoundingClientRect(); if (!r.width) return;
+    dpr = Math.min(window.devicePixelRatio || 1, 2); W = r.width; H = r.height;
+    cv.width = layer.width = Math.round(W * dpr); cv.height = layer.height = Math.round(H * dpr);
+    if (!view) view = { x: W / 2, y: H / 2, k: 1 };
+    render();
+  }
+
+  function drawStroke(g, s) {
+    g.save(); g.lineCap = 'round'; g.lineJoin = 'round';
+    if (s.tool === 'eraser') { g.globalCompositeOperation = 'destination-out'; g.strokeStyle = g.fillStyle = '#000'; }
+    else {
+      g.strokeStyle = g.fillStyle = s.color;
+      if (s.style === 'marker') g.globalAlpha = .45;
+      if (s.style === 'glow') { g.shadowColor = s.color; g.shadowBlur = s.size * 1.8 * view.k * dpr; }
+    }
+    g.lineWidth = s.size;
+    const p = s.pts;
+    if (p.length === 1) { g.beginPath(); g.arc(p[0][0], p[0][1], s.size / 2, 0, 6.2832); g.fill(); }
+    else {
+      g.beginPath(); g.moveTo(p[0][0], p[0][1]);
+      for (let i = 1; i < p.length - 1; i++) g.quadraticCurveTo(p[i][0], p[i][1], (p[i][0] + p[i + 1][0]) / 2, (p[i][1] + p[i + 1][1]) / 2);
+      g.lineTo(p[p.length - 1][0], p[p.length - 1][1]); g.stroke();
+    }
+    g.restore();
+  }
+
+  function render() {
+    if (!W) return;
+    const b = BG[bg];
+    c.setTransform(1, 0, 0, 1, 0, 0); c.fillStyle = b.base; c.fillRect(0, 0, cv.width, cv.height);
+    // dot grid
+    let step = 40 * view.k; while (step < 18) step *= 2; while (step > 90) step /= 2;
+    const ox = ((view.x % step) + step) % step, oy = ((view.y % step) + step) % step;
+    c.fillStyle = b.dot;
+    for (let x = ox; x < W; x += step) for (let y = oy; y < H; y += step) c.fillRect(x * dpr - 1, y * dpr - 1, 2 * dpr * .8, 2 * dpr * .8);
+    // home marker
+    c.save(); c.translate(view.x * dpr, view.y * dpr); c.scale(view.k * dpr, view.k * dpr);
+    c.fillStyle = b.ink; c.font = '600 13px Inter, sans-serif'; c.textAlign = 'center'; c.fillText('✦ home ✦', 0, -10); c.restore();
+    // strokes
+    lc.setTransform(1, 0, 0, 1, 0, 0); lc.clearRect(0, 0, layer.width, layer.height);
+    lc.setTransform(view.k * dpr, 0, 0, view.k * dpr, view.x * dpr, view.y * dpr);
+    strokes.forEach(s => drawStroke(lc, s)); if (cur) drawStroke(lc, cur);
+    c.setTransform(1, 0, 0, 1, 0, 0); c.drawImage(layer, 0, 0);
+    const cw = toWorld({ x: W / 2, y: H / 2 });
+    $('#boardInfo').textContent = `${Math.round(view.k * 100)}% · x ${Math.round(cw.x)}, y ${Math.round(cw.y)} · ${strokes.length} strokes`;
+  }
+
+  function zoomAt(p, f) {
+    const k = clamp(view.k * f, .1, 8), wp = toWorld(p);
+    view.k = k; view.x = p.x - wp.x * k; view.y = p.y - wp.y * k; render(); persist();
+  }
+  const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y), mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+
+  function setTool(t) {
+    tool = t; $$('.tool').forEach(b => b.classList.toggle('is-active', b.dataset.tool === t));
+    cv.style.cursor = t === 'pan' ? 'grab' : 'crosshair';
+  }
+  function undo() { if (strokes.length) { redo.push(strokes.pop()); render(); persist(); } }
+  function redoFn() { if (redo.length) { strokes.push(redo.pop()); render(); persist(); } }
+
+  function init() {
+    // palette
+    $('#palette').innerHTML = PALETTE.map(col => `<span class="swatch-dot" data-col="${col}" style="background:${col}"></span>`).join('');
+    $('#palette').addEventListener('click', e => { const d = e.target.closest('[data-col]'); if (!d) return; $('#penColor').value = d.dataset.col; if (tool !== 'brush') setTool('brush'); });
+    $('#boardBg').value = bg; $('#penSize').addEventListener('input', e => $('#penSizeVal').textContent = e.target.value);
+    $('#boardBg').addEventListener('change', e => { bg = e.target.value; render(); persist(); });
+    $$('.tool').forEach(b => b.addEventListener('click', () => setTool(b.dataset.tool)));
+    setTool('brush');
+
+    cv.addEventListener('pointerdown', e => {
+      cv.setPointerCapture(e.pointerId); const p = pos(e); pointers.set(e.pointerId, p);
+      if (pointers.size === 2) { cur = null; const [a, b] = [...pointers.values()]; pinch = { d: dist(a, b), mid: mid(a, b), view: { ...view } }; pan = null; render(); return; }
+      if (e.button === 1 || tool === 'pan' || spaceDown) { pan = { sx: p.x, sy: p.y, vx: view.x, vy: view.y }; cv.style.cursor = 'grabbing'; e.preventDefault(); return; }
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      const w = toWorld(p);
+      cur = { tool: tool === 'eraser' ? 'eraser' : 'brush', color: $('#penColor').value, size: +$('#penSize').value, style: $('#brushStyle').value, pts: [[Math.round(w.x * 10) / 10, Math.round(w.y * 10) / 10]] };
+      redo = []; schedule();
+    });
+    cv.addEventListener('pointermove', e => {
+      const p = pos(e); if (pointers.has(e.pointerId)) pointers.set(e.pointerId, p);
+      if (pinch && pointers.size >= 2) {
+        const [a, b] = [...pointers.values()], k = clamp(pinch.view.k * dist(a, b) / pinch.d, .1, 8), m = mid(a, b);
+        const wx = (pinch.mid.x - pinch.view.x) / pinch.view.k, wy = (pinch.mid.y - pinch.view.y) / pinch.view.k;
+        view.k = k; view.x = m.x - wx * k; view.y = m.y - wy * k; schedule(); return;
+      }
+      if (pan) { view.x = pan.vx + p.x - pan.sx; view.y = pan.vy + p.y - pan.sy; schedule(); return; }
+      if (cur) {
+        const w = toWorld(p), last = cur.pts[cur.pts.length - 1];
+        if (Math.hypot(w.x - last[0], w.y - last[1]) * view.k > 1.2) { cur.pts.push([Math.round(w.x * 10) / 10, Math.round(w.y * 10) / 10]); schedule(); }
+      }
+    });
+    const end = e => {
+      pointers.delete(e.pointerId);
+      if (pinch && pointers.size < 2) { pinch = null; persist(); }
+      if (pan) { pan = null; cv.style.cursor = tool === 'pan' ? 'grab' : 'crosshair'; persist(); }
+      if (cur) { strokes.push(cur); cur = null; render(); persist(); }
+    };
+    cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+    cv.addEventListener('wheel', e => { e.preventDefault(); zoomAt(pos(e), Math.exp(-e.deltaY * .0016)); }, { passive: false });
+    cv.addEventListener('mouseenter', () => hover = true); cv.addEventListener('mouseleave', () => hover = false);
+    cv.addEventListener('contextmenu', e => e.preventDefault());
+
+    document.addEventListener('keydown', e => {
+      if (!hover || /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || '')) return;
+      if (e.code === 'Space') { spaceDown = true; cv.style.cursor = 'grab'; e.preventDefault(); }
+      else if (e.key === 'b') setTool('brush'); else if (e.key === 'e') setTool('eraser'); else if (e.key === 'h') setTool('pan');
+      else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); e.shiftKey ? redoFn() : undo(); }
+      else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redoFn(); }
+    });
+    document.addEventListener('keyup', e => { if (e.code === 'Space') { spaceDown = false; cv.style.cursor = tool === 'pan' ? 'grab' : 'crosshair'; } });
+
+    $('#undoBtn').addEventListener('click', undo); $('#redoBtn').addEventListener('click', redoFn);
+    $('#zoomIn').addEventListener('click', () => zoomAt({ x: W / 2, y: H / 2 }, 1.25));
+    $('#zoomOut').addEventListener('click', () => zoomAt({ x: W / 2, y: H / 2 }, .8));
+    $('#homeView').addEventListener('click', () => { view = { x: W / 2, y: H / 2, k: 1 }; render(); persist(); });
+    $('#clearBoard').addEventListener('click', () => { if (!strokes.length) return; if (confirm('Clear the whole drawing board? This cannot be undone.')) { strokes = []; redo = []; render(); persist(); } });
+    $('#dlBoard').addEventListener('click', () => { const a = document.createElement('a'); a.download = 'our-drawing.png'; a.href = cv.toDataURL('image/png'); a.click(); toast('Drawing downloaded 🎨'); });
+
+    new ResizeObserver(resize).observe(wrap); resize();
+  }
+  return { init };
+})();
+
+/* ---------- 7. Mini-games hub ---------- */
+const Games = (() => {
+  function setGame(id) {
+    $$('.game-pane').forEach(p => p.classList.toggle('active', p.id === 'game-' + id));
+    $$('.gtab').forEach(t => t.classList.toggle('ring-2', t.dataset.game === id));
+    $$('.gtab').forEach(t => t.classList.toggle('ring-gold', t.dataset.game === id));
+    if (id !== 'catch') Catcher.pause(); else Catcher.show();
+    store.set('game', id); icons();
+  }
+  function init() {
+    $$('.gtab').forEach(t => t.addEventListener('click', () => setGame(t.dataset.game)));
+    TTT.init(); Memory.init(); Quiz.init(); Catcher.init();
+    setGame(store.get('game', 'ttt'));
+  }
+  return { init };
+})();
+
+/* ----- 7a. Tic-Tac-Love ----- */
+const TTT = (() => {
+  const LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  let cells, turn, over, mode = '2p', starter = 'H', winLine = null, botBusy = false;
+  let score = store.get('ttt', { H: 0, S: 0, D: 0 });
+
+  const winner = b => { for (const l of LINES) if (b[l[0]] && b[l[0]] === b[l[1]] && b[l[0]] === b[l[2]]) return { w: b[l[0]], l }; return null; };
+  function minimax(b, player) {
+    const w = winner(b); if (w) return w.w === 'S' ? 10 : -10;
+    if (b.every(Boolean)) return 0;
+    const scores = [];
+    b.forEach((v, i) => { if (!v) { b[i] = player; scores.push(minimax(b, player === 'S' ? 'H' : 'S') + (player === 'S' ? -1 : 1) * 0); b[i] = null; } });
+    return player === 'S' ? Math.max(...scores) : Math.min(...scores);
+  }
+  function bestMove() {
+    let best = -Infinity, moves = [];
+    cells.forEach((v, i) => { if (!v) { cells[i] = 'S'; const s = minimax(cells, 'H'); cells[i] = null; if (s > best) { best = s; moves = [i]; } else if (s === best) moves.push(i); } });
+    return pick(moves);
+  }
+  function botMove() {
+    const free = cells.map((v, i) => v ? -1 : i).filter(i => i >= 0);
+    if (mode === 'easy' && Math.random() < .65) return pick(free);
+    return bestMove();
+  }
+  function status() {
+    const el = $('#tttStatus');
+    if (over) return;
+    el.innerHTML = turn === 'H' ? '<b class="text-blush">Hama ♥</b> — your move' : (mode === '2p' ? '<b class="text-gold">Sammy ✦</b> — your move' : '<b class="text-gold">Sammy ✦</b> is thinking…');
+  }
+  function render() {
+    $('#tttBoard').innerHTML = cells.map((v, i) => `<button class="ttt-cell ${v ? 'filled' : ''} ${winLine?.includes(i) ? 'win' : ''}" data-i="${i}" aria-label="Cell ${i + 1}">${v === 'H' ? HEART_SVG : v === 'S' ? SPARKLE_SVG : ''}</button>`).join('');
+    $('#tttScoreH').textContent = score.H; $('#tttScoreS').textContent = score.S; $('#tttScoreD').textContent = score.D;
+  }
+  function play(i) {
+    if (over || cells[i] || botBusy) return;
+    cells[i] = turn; const w = winner(cells);
+    if (w) { over = true; winLine = w.l; score[w.w]++; store.set('ttt', score); $('#tttStatus').innerHTML = `<b class="${w.w === 'H' ? 'text-blush' : 'text-gold'}">${w.w === 'H' ? 'Hama ♥' : 'Sammy ✦'} wins!</b> Love wins either way.`; }
+    else if (cells.every(Boolean)) { over = true; score.D++; store.set('ttt', score); $('#tttStatus').innerHTML = '<b>A perfect draw</b> — you two are perfectly matched.'; }
+    else { turn = turn === 'H' ? 'S' : 'H'; status(); }
+    render();
+    if (!over && mode !== '2p' && turn === 'S') { botBusy = true; setTimeout(() => { botBusy = false; if (!over) play(botMove()); }, 520); }
+  }
+  function reset(flipStarter = true) {
+    cells = Array(9).fill(null); over = false; winLine = null;
+    if (flipStarter) starter = starter === 'H' ? 'S' : 'H';
+    turn = starter; render(); status();
+    if (mode !== '2p' && turn === 'S') { botBusy = true; setTimeout(() => { botBusy = false; play(botMove()); }, 500); }
+  }
+  function init() {
+    $('#tttHeartIcon').innerHTML = HEART_SVG; $('#tttSparkIcon').innerHTML = SPARKLE_SVG;
+    $('#tttBoard').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) play(+b.dataset.i); });
+    $('#tttReset').addEventListener('click', () => reset(true));
+    $('#tttClear').addEventListener('click', () => { score = { H: 0, S: 0, D: 0 }; store.set('ttt', score); reset(false); });
+    $$('#tttModes button').forEach(b => b.addEventListener('click', () => { mode = b.dataset.mode; $$('#tttModes button').forEach(x => x.classList.toggle('is-active', x === b)); starter = 'H'; reset(false); }));
+    starter = 'H'; reset(false);
+  }
+  return { init };
+})();
+
+/* ----- 7b. Couple's Memory Match ----- */
+const Memory = (() => {
+  const ICONS = ['💍', '🌹', '💌', '🥂', '🌙', '🎁', '🧸', '🍫'];
+  let deck, open, lock, moves, secs, timer, matched, best = store.get('memBest', null);
+  const fmt = s => `${Math.floor(s / 60)}:${pad(s % 60)}`;
+  function reset() {
+    clearInterval(timer); timer = null; open = []; lock = false; moves = 0; secs = 0; matched = 0;
+    deck = [...ICONS, ...ICONS].sort(() => Math.random() - .5);
+    $('#memBoard').innerHTML = deck.map((ic, i) => `<button class="mem-card" data-i="${i}" aria-label="Card ${i + 1}"><div class="mem-inner"><div class="mem-face mem-front"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">${'<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>'}</svg></div><div class="mem-face mem-back">${ic}</div></div></button>`).join('');
+    $('#memMoves').textContent = 0; $('#memTime').textContent = '0:00'; $('#memBest').textContent = best ? best + ' moves' : '—';
+  }
+  function flip(i) {
+    const el = $(`.mem-card[data-i="${i}"]`);
+    if (lock || !el || el.classList.contains('flip') || el.classList.contains('done')) return;
+    if (!timer) timer = setInterval(() => { secs++; $('#memTime').textContent = fmt(secs); }, 1000);
+    el.classList.add('flip'); open.push(i);
+    if (open.length === 2) {
+      moves++; $('#memMoves').textContent = moves; const [a, b] = open;
+      if (deck[a] === deck[b]) {
+        [a, b].forEach(x => $(`.mem-card[data-i="${x}"]`).classList.add('done')); open = []; matched++;
+        if (matched === ICONS.length) {
+          clearInterval(timer); timer = null;
+          const isBest = !best || moves < best; if (isBest) { best = moves; store.set('memBest', best); $('#memBest').textContent = best + ' moves'; }
+          toast(`All ${ICONS.length} pairs found in ${moves} moves, ${fmt(secs)} ${isBest ? '— a new best! 🏆' : '💞'}`, 4800);
+        }
+      } else { lock = true; setTimeout(() => { [a, b].forEach(x => $(`.mem-card[data-i="${x}"]`).classList.remove('flip')); open = []; lock = false; }, 850); }
+    }
+  }
+  function init() { $('#memBoard').addEventListener('click', e => { const b = e.target.closest('.mem-card'); if (b) flip(+b.dataset.i); }); $('#memReset').addEventListener('click', reset); reset(); }
+  return { init };
+})();
+
+/* ----- 7c. Love Quiz ----- */
+const Quiz = (() => {
+  const BASE = [
+    { q: 'Which flower is the classic symbol of deep romantic love?', o: ['Red rose', 'Daisy', 'Marigold'] },
+    { q: 'In Greek mythology, who is the goddess of love?', o: ['Aphrodite', 'Athena', 'Hera'] },
+    { q: 'Which city is famously called "the City of Love"?', o: ['Paris', 'Rome', 'Vienna'] },
+    { q: 'Which hormone is nicknamed the "love hormone"?', o: ['Oxytocin', 'Insulin', 'Adrenaline'] },
+    { q: 'Who wrote the tragic romance "Romeo and Juliet"?', o: ['William Shakespeare', 'Charles Dickens', 'Jane Austen'] },
+    { q: 'What is the traditional gift for a first wedding anniversary?', o: ['Paper', 'Silver', 'Diamond'] },
+    { q: 'Which gemstone is traditionally given for a 40th anniversary?', o: ['Ruby', 'Emerald', 'Pearl'] },
+    { q: 'What is the name of the Roman god of love?', o: ['Cupid', 'Mars', 'Jupiter'] },
+    { q: 'Which month is Valentine\'s Day celebrated in?', o: ['February', 'April', 'December'] },
+    { q: 'What do we call a love poem sung under a loved one\'s window?', o: ['A serenade', 'A requiem', 'A lullaby'] }
+  ];
+  let custom = store.get('quizCustom', []);
+  let list, idx, sc, players = ['Hama', 'Sammy'], answered;
+  const shuffle = a => [...a].sort(() => Math.random() - .5);
+
+  function updInfo() {
+    $('#cqInfo').innerHTML = custom.length ? `${custom.length} custom question${custom.length > 1 ? 's' : ''} saved · <button id="cqClear" class="underline hover:text-cream">remove them</button>` : 'Your questions are mixed into the next round.';
+  }
+  function hud() {
+    $('#qScoreH').textContent = sc.Hama; $('#qScoreS').textContent = sc.Sammy;
+    const who = idx < list.length ? players[idx % 2] : null;
+    $('#qHama').classList.toggle('ring-2', who === 'Hama'); $('#qHama').classList.toggle('ring-gold', who === 'Hama');
+    $('#qSammy').classList.toggle('ring-2', who === 'Sammy'); $('#qSammy').classList.toggle('ring-gold', who === 'Sammy');
+    $('#quizProg').textContent = idx < list.length ? `Question ${idx + 1} of ${list.length}` : 'Finished';
+  }
+  function show() {
+    hud();
+    if (idx >= list.length) {
+      const h = sc.Hama, s = sc.Sammy, res = h === s ? 'A tie — you both know love equally well 💞' : `${h > s ? 'Hama' : 'Sammy'} wins this round! 🏆`;
+      $('#quizBox').innerHTML = `<div class="text-center py-10"><div class="font-display text-6xl text-gold-grad">${h} – ${s}</div><p class="mt-4 text-lg">${res}</p><button id="quizAgain" class="btn btn-gold mt-6"><i data-lucide="rotate-ccw" class="w-4 h-4"></i> Play again</button></div>`; icons(); return;
+    }
+    const item = list[idx], who = players[idx % 2];
+    const opts = shuffle(item.o.map((t, i) => ({ t, right: i === 0 })));
+    answered = false;
+    $('#quizBox').innerHTML = `<div class="glass-soft rounded-2xl p-5 mb-4"><div class="eyebrow mb-2">${who}'s turn${item.custom ? ' · ours ♥' : ''}</div><h4 class="font-display text-2xl leading-snug">${esc(item.q)}</h4></div>
+      <div class="space-y-2.5" id="quizOpts">${opts.map((o, i) => `<button class="quiz-opt" data-right="${o.right}">${String.fromCharCode(65 + i)}. ${esc(o.t)}</button>`).join('')}</div>
+      <div id="quizFb" class="mt-4 min-h-[2.5rem]"></div>`;
+  }
+  function answer(btn) {
+    if (answered) return; answered = true;
+    const who = players[idx % 2], ok = btn.dataset.right === 'true';
+    $$('#quizOpts .quiz-opt').forEach(b => { b.disabled = true; if (b.dataset.right === 'true') b.classList.add('right'); });
+    if (ok) { sc[who]++; } else btn.classList.add('wrong');
+    hud();
+    $('#quizFb').innerHTML = `<div class="flex items-center justify-between gap-3"><span class="${ok ? 'text-emerald-300' : 'text-rose-300'} font-semibold">${ok ? `Correct! +1 for ${who} ♥` : 'Not quite — the right answer is highlighted.'}</span><button id="quizNext" class="btn btn-gold !py-2">${idx + 1 >= list.length ? 'See results' : 'Next'} <i data-lucide="arrow-right" class="w-4 h-4"></i></button></div>`;
+    icons();
+  }
+  function start() { list = shuffle([...BASE, ...custom.map(x => ({ ...x, custom: true }))]).slice(0, 12); idx = 0; sc = { Hama: 0, Sammy: 0 }; show(); }
+  function init() {
+    $('#quizBox').addEventListener('click', e => {
+      const o = e.target.closest('.quiz-opt'); if (o) answer(o);
+      if (e.target.closest('#quizNext')) { idx++; show(); icons(); }
+      if (e.target.closest('#quizAgain')) start();
+    });
+    $('#cqAdd').addEventListener('click', () => {
+      const q = $('#cqQ').value.trim(), a = $('#cqA').value.trim(), b = $('#cqB').value.trim(), cc = $('#cqC').value.trim();
+      if (!q || !a || !b || !cc) return toast('Fill in the question and all three answers ♥');
+      custom.push({ q, o: [a, b, cc] }); store.set('quizCustom', custom); ['cqQ', 'cqA', 'cqB', 'cqC'].forEach(id => $('#' + id).value = ''); updInfo(); toast('Question added to the quiz 💌');
+    });
+    $('#cqInfo').addEventListener('click', e => { if (e.target.id === 'cqClear') { custom = []; store.set('quizCustom', custom); updInfo(); } });
+    updInfo(); start();
+  }
+  return { init };
+})();
+
+/* ----- 7d. Heart Catcher Arcade ----- */
+const Catcher = (() => {
+  const cv = $('#catchCanvas'), c = cv.getContext('2d'), W = 760, H = 440, MAX_LIVES = 5;
+  let state = 'idle', score = 0, lives = MAX_LIVES, level = 1, caught = 0, best = store.get('catchBest', 0);
+  let items = [], bits = [], pops = [], spawnT = 0, last = 0, raf = 0, target = W / 2, keys = {};
+  const basket = { x: W / 2, w: 112, h: 28 }, stars = Array.from({ length: 50 }, () => ({ x: rand(0, W), y: rand(0, H), r: rand(.4, 1.6), p: rand(0, 6.28) }));
+
+  function hud() {
+    $('#cScore').textContent = score; $('#cLevel').textContent = level; $('#cBest').textContent = best;
+    $('#cLives').innerHTML = '<span class="text-blush">' + '♥'.repeat(Math.max(0, lives)) + '</span><span class="text-white/20">' + '♥'.repeat(MAX_LIVES - Math.max(0, lives)) + '</span>';
+  }
+  function reset() { score = 0; lives = MAX_LIVES; level = 1; caught = 0; items = []; bits = []; pops = []; spawnT = 20; basket.x = target = W / 2; hud(); }
+  function start() { reset(); state = 'play'; last = performance.now(); if (!raf) raf = requestAnimationFrame(loop); }
+  function pause() { if (state === 'play') { state = 'paused'; draw(); } }
+  function resume() { if (state === 'paused') { state = 'play'; last = performance.now(); if (!raf) raf = requestAnimationFrame(loop); } }
+  function show() { draw(); }
+  function gameOver() { state = 'over'; if (score > best) { best = score; store.set('catchBest', best); } hud(); draw(); }
+
+  function spawn() {
+    const r = Math.random(), brokenP = Math.min(.32, .14 + level * .02);
+    const type = r < brokenP ? 'broken' : r < brokenP + .1 ? 'gold' : 'heart';
+    items.push({ type, x: rand(28, W - 28), y: -30, vy: (2 + level * .35) * rand(.9, 1.3) * (type === 'gold' ? 1.25 : 1), s: type === 'gold' ? 30 : 34, rot: rand(-.4, .4), vr: rand(-.03, .03), ph: rand(0, 6.28) });
+  }
+  function burst(x, y, col) { for (let i = 0; i < 12; i++) bits.push({ x, y, vx: rand(-3, 3), vy: rand(-4, 0), life: 1, col, s: rand(2, 5) }); }
+
+  function loop(now) {
+    raf = 0; if (state !== 'play') { draw(); return; }
+    const dt = Math.min(2.2, (now - last) / 16.67); last = now;
+    const dir = (keys.ArrowRight || keys.d || keys.D ? 1 : 0) - (keys.ArrowLeft || keys.a || keys.A ? 1 : 0);
+    if (dir) target = clamp(target + dir * 10 * dt, basket.w / 2, W - basket.w / 2);
+    basket.x += (target - basket.x) * Math.min(1, .3 * dt);
+    spawnT -= dt; if (spawnT <= 0) { spawn(); spawnT = Math.max(16, 52 - level * 4) + rand(0, 16); }
+    const top = H - 62;
+    items = items.filter(it => {
+      it.y += it.vy * dt; it.rot += it.vr * dt; it.ph += .05 * dt; it.x += Math.sin(it.ph) * .35 * dt;
+      if (it.y + it.s * .55 >= top && it.y < top + 26 && Math.abs(it.x - basket.x) < basket.w / 2 + 6) {
+        if (it.type === 'broken') { lives--; burst(it.x, top, '#8d99ae'); pops.push({ x: it.x, y: top - 10, t: '−1 ♥', col: '#ff6b81', life: 1 }); }
+        else { const pts = it.type === 'gold' ? 5 : 1; score += pts; caught++; burst(it.x, top, it.type === 'gold' ? '#ffd23f' : '#ff8fab'); pops.push({ x: it.x, y: top - 10, t: '+' + pts, col: it.type === 'gold' ? '#ffd23f' : '#ffb3c6', life: 1 });
+          if (caught % 12 === 0) { level++; pops.push({ x: W / 2, y: H / 2, t: 'Level ' + level + '!', col: '#dda15e', life: 1.6, big: true }); } }
+        hud(); return false;
+      }
+      if (it.y > H + 30) { if (it.type === 'heart') { lives--; hud(); pops.push({ x: it.x, y: H - 20, t: 'missed', col: '#ff6b81', life: .8 }); } return false; }
+      return true;
+    });
+    bits.forEach(b => { b.x += b.vx * dt; b.y += b.vy * dt; b.vy += .22 * dt; b.life -= .03 * dt; }); bits = bits.filter(b => b.life > 0);
+    pops.forEach(p => { p.y -= .8 * dt; p.life -= .016 * dt; }); pops = pops.filter(p => p.life > 0);
+    if (lives <= 0) { lives = 0; gameOver(); return; }
+    draw(); raf = requestAnimationFrame(loop);
+  }
+
+  function draw() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (cv.width !== W * dpr) { cv.width = W * dpr; cv.height = H * dpr; }
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#0b2a1a'); g.addColorStop(.7, '#0d2818'); g.addColorStop(1, '#16382c');
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+    const t = performance.now() / 700;
+    stars.forEach(s => { c.globalAlpha = .25 + .35 * Math.sin(t + s.p); c.fillStyle = '#fefae0'; c.beginPath(); c.arc(s.x, s.y, s.r, 0, 6.2832); c.fill(); }); c.globalAlpha = 1;
+    const gl = c.createRadialGradient(W / 2, H + 30, 10, W / 2, H + 30, 380); gl.addColorStop(0, 'rgba(221,161,94,.22)'); gl.addColorStop(1, 'transparent'); c.fillStyle = gl; c.fillRect(0, 0, W, H);
+    // items
+    items.forEach(it => {
+      c.save(); c.translate(it.x, it.y); c.rotate(it.rot);
+      if (it.type === 'broken') { c.fillStyle = '#6c7a89'; c.shadowColor = '#000'; c.shadowBlur = 8; heartPath(c, 0, -it.s / 2, it.s); c.fill(); c.shadowBlur = 0; c.strokeStyle = '#1b2430'; c.lineWidth = 2.2; c.beginPath(); c.moveTo(-2, -it.s * .45); c.lineTo(3, -it.s * .15); c.lineTo(-3, it.s * .1); c.lineTo(2, it.s * .38); c.stroke(); }
+      else { const gold = it.type === 'gold'; const gr = c.createLinearGradient(0, -it.s / 2, 0, it.s / 2); gr.addColorStop(0, gold ? '#fff0b3' : '#ffb3c6'); gr.addColorStop(1, gold ? '#dda15e' : '#ff4d79');
+        c.fillStyle = gr; c.shadowColor = gold ? '#ffd23f' : '#ff4d79'; c.shadowBlur = gold ? 22 : 14; heartPath(c, 0, -it.s / 2, it.s); c.fill(); c.shadowBlur = 0; c.fillStyle = 'rgba(255,255,255,.55)'; c.beginPath(); c.ellipse(-it.s * .2, -it.s * .28, it.s * .08, it.s * .13, -.6, 0, 6.2832); c.fill(); }
+      c.restore();
+    });
+    // basket
+    const bx = basket.x, by = H - 62, hw = basket.w / 2;
+    c.save(); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 12; c.shadowOffsetY = 6;
+    const bg = c.createLinearGradient(0, by, 0, by + basket.h); bg.addColorStop(0, '#f0c488'); bg.addColorStop(1, '#a96f2e');
+    c.fillStyle = bg; c.beginPath(); c.moveTo(bx - hw, by); c.lineTo(bx + hw, by); c.lineTo(bx + hw * .78, by + basket.h); c.quadraticCurveTo(bx, by + basket.h + 8, bx - hw * .78, by + basket.h); c.closePath(); c.fill(); c.restore();
+    c.strokeStyle = 'rgba(90,52,14,.45)'; c.lineWidth = 1.4;
+    for (let i = -3; i <= 3; i++) { c.beginPath(); c.moveTo(bx + i * hw / 3.5, by + 2); c.lineTo(bx + i * hw / 4.4, by + basket.h); c.stroke(); }
+    c.beginPath(); c.moveTo(bx - hw * .9, by + 13); c.lineTo(bx + hw * .9, by + 13); c.stroke();
+    c.fillStyle = '#ffe3b3'; c.beginPath(); c.roundRect ? c.roundRect(bx - hw - 4, by - 6, basket.w + 8, 10, 5) : c.rect(bx - hw - 4, by - 6, basket.w + 8, 10); c.fill();
+    c.strokeStyle = 'rgba(255,227,179,.6)'; c.lineWidth = 3; c.beginPath(); c.arc(bx, by - 6, hw * .62, Math.PI, 0); c.stroke();
+    // particles
+    bits.forEach(b => { c.globalAlpha = clamp(b.life, 0, 1); c.fillStyle = b.col; c.beginPath(); c.arc(b.x, b.y, b.s, 0, 6.2832); c.fill(); }); c.globalAlpha = 1;
+    pops.forEach(p => { c.globalAlpha = clamp(p.life, 0, 1); c.fillStyle = p.col; c.font = `700 ${p.big ? 40 : 20}px Inter, sans-serif`; c.textAlign = 'center'; c.fillText(p.t, p.x, p.y); }); c.globalAlpha = 1;
+    // overlays
+    if (state !== 'play') {
+      c.fillStyle = 'rgba(5,18,11,.66)'; c.fillRect(0, 0, W, H); c.textAlign = 'center'; c.fillStyle = '#fefae0';
+      c.font = '700 40px "Playfair Display", serif';
+      const title = state === 'idle' ? 'Heart Catcher' : state === 'paused' ? 'Paused' : 'Game over';
+      c.fillText(title, W / 2, H / 2 - 28);
+      c.font = '500 18px Inter, sans-serif'; c.fillStyle = '#ffb3c6';
+      c.fillText(state === 'over' ? `You caught ${score} points of love · best ${best}` : state === 'paused' ? 'Tap or press Space to continue' : 'Catch ♥ and golden ♥ — avoid the broken ones', W / 2, H / 2 + 8);
+      c.fillStyle = '#dda15e'; c.font = '600 16px Inter, sans-serif'; c.fillText(state === 'over' ? 'Tap or press Space to play again' : state === 'idle' ? 'Tap or press Space to start' : '', W / 2, H / 2 + 42);
+    }
+  }
+  function activate() { if (state === 'play') return; state === 'paused' ? resume() : start(); }
+  function init() {
+    hud(); draw();
+    const setT = e => { const r = cv.getBoundingClientRect(); target = clamp((e.clientX - r.left) * W / r.width, basket.w / 2, W - basket.w / 2); };
+    cv.addEventListener('pointermove', e => { setT(e); if (state === 'play' && !raf) raf = requestAnimationFrame(loop); });
+    cv.addEventListener('pointerdown', e => { setT(e); activate(); });
+    addEventListener('keydown', e => {
+      if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || '')) return;
+      const active = $('#game-catch').classList.contains('active');
+      keys[e.key] = true;
+      if (!active) return;
+      if (['ArrowLeft', 'ArrowRight'].includes(e.key) && state === 'play') e.preventDefault();
+      if (e.code === 'Space' && state !== 'play') { e.preventDefault(); activate(); }
+    });
+    addEventListener('keyup', e => { keys[e.key] = false; });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
+  }
+  return { init, pause, show };
+})();
+
+/* ---------- 8. Love letters & notifications ---------- */
+const Letters = (() => {
+  const SEED = [{ id: 1, from: 'Hama', title: 'Our very first pinned note', text: 'Sammy,\nThis little board is ours. Pin your thoughts here whenever your heart is full — I will read every single one.', paper: 'parchment', date: Date.now() - 36e5, hearts: 1 }];
+  let list = store.get('letters', null) || SEED;
+  let from = 'Hama', paper = 'parchment', notifyOn = !!store.get('notify', false);
+  const ICON = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0d2818"/><path d="M32 50S12 38 12 25c0-6 4.500-10 10-10 4 0 8 2 10 6 2-4 6-6 10-6 5.500 0 10 4 10 10 0 13-20 25-20 25z" fill="#ffb3c6"/></svg>');
+
+  function render() {
+    $('#letterCount').textContent = `${list.length} note${list.length === 1 ? '' : 's'} pinned`;
+    if (!list.length) { $('#letterBoard').innerHTML = '<div class="col-span-full text-center text-cream/45 py-16"><i data-lucide="mail-heart" class="w-10 h-10 mx-auto text-gold/70 mb-3"></i><p class="font-script text-2xl">Your first love letter will live here.</p></div>'; icons(); return; }
+    $('#letterBoard').innerHTML = list.map(l => {
+      const rot = (((l.id % 7) - 3) * .7).toFixed(1);
+      return `<article class="letter-card paper-${l.paper} relative rounded-xl p-5 pt-6 shadow-xl" style="transform:rotate(${rot}deg)" data-id="${l.id}">
+        <span class="pin"></span>
+        <h4 class="font-display text-lg leading-snug pr-6">${esc(l.title || 'A little love note')}</h4>
+        <p class="font-script text-[1.45rem] leading-7 mt-2 whitespace-pre-wrap break-words">${esc(l.text)}</p>
+        <div class="flex items-center justify-between mt-4 pt-3 border-t border-current/20 text-xs opacity-90">
+          <span>— ${esc(l.from)} · ${new Date(l.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</span>
+          <span class="flex items-center gap-3"><button data-like="${l.id}" class="flex items-center gap-1 hover:scale-110 transition" title="Send a heart">♥ <b>${l.hearts || 0}</b></button><button data-del="${l.id}" class="opacity-60 hover:opacity-100" title="Remove">✕</button></span>
+        </div></article>`;
+    }).join('');
+  }
+  const save = () => { if (!store.set('letters', list)) toast('Browser storage is full — remove something first.'); };
+
+  function setSwitch(info) {
+    const sw = $('#notifySwitch'); sw.classList.toggle('on', notifyOn); sw.setAttribute('aria-checked', notifyOn);
+    if (info) $('#notifyInfo').textContent = info;
+  }
+  function notify(title, body) {
+    if (!notifyOn) return;
+    if ('Notification' in window && Notification.permission === 'granted') {
+      try { new Notification(title, { body, icon: ICON, tag: 'olh-letter' }); return; } catch {}
+    }
+    toast(title + (body ? ' — ' + body : ''), 4500);
+  }
+  async function toggleNotify() {
+    if (notifyOn) { notifyOn = false; store.set('notify', false); setSwitch('Notifications are off.'); return; }
+    if (!('Notification' in window)) { notifyOn = true; store.set('notify', true); setSwitch('System alerts are not supported here, so you will see in-app alerts.'); return; }
+    let perm = Notification.permission;
+    if (perm === 'default') { try { perm = await Notification.requestPermission(); } catch { perm = 'denied'; } }
+    notifyOn = true; store.set('notify', true);
+    setSwitch(perm === 'granted' ? 'Love notifications are on 💌' : 'Browser permission is blocked, so alerts will appear inside the hub.');
+  }
+  async function testAlert() {
+    if (!notifyOn) await toggleNotify();
+    notify('Hama sent you a new love letter! ❤️', 'Open Our Love Hub to read it');
+  }
+  function pin() {
+    const text = $('#lText').value.trim();
+    if (!text) return toast('Write a little love first ♥');
+    const title = $('#lTitle').value.trim();
+    list.unshift({ id: Date.now(), from, title, text, paper, date: Date.now(), hearts: 0 });
+    save(); render(); icons(); $('#lText').value = ''; $('#lTitle').value = ''; $('#lCount').textContent = '0/1200';
+    toast('Pinned to our bulletin board 📌');
+    notify(`${from} sent you a new love letter! ❤️`, title || 'A new note was pinned to the board');
+  }
+  function init() {
+    render(); icons(); setSwitch();
+    document.addEventListener('olh:login', e => { from = e.detail.user; $('#fromBadge').textContent = from; $('#fromEmoji').textContent = e.detail.emoji; });
+    $('#paperPick').addEventListener('click', e => { const b = e.target.closest('[data-paper]'); if (!b) return; paper = b.dataset.paper; $$('#paperPick button').forEach(x => x.classList.toggle('sel', x === b)); $('#lPreview').className = `paper-${paper} rounded-2xl mt-1.5 p-1 shadow-xl`; });
+    $('#lText').addEventListener('input', e => $('#lCount').textContent = `${e.target.value.length}/1200`);
+    $('#lText').addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') pin(); });
+    $('#lPin').addEventListener('click', pin);
+    $('#letterBoard').addEventListener('click', e => {
+      const lk = e.target.closest('[data-like]'), dl = e.target.closest('[data-del]');
+      if (lk) { const l = list.find(x => x.id == lk.dataset.like); if (l) { l.hearts = (l.hearts || 0) + 1; save(); render(); } }
+      if (dl) { list = list.filter(x => x.id != dl.dataset.del); save(); render(); icons(); }
+    });
+    $('#notifySwitch').addEventListener('click', toggleNotify);
+    $('#notifySwitch').addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleNotify(); } });
+    $('#notifyTest').addEventListener('click', testAlert);
+  }
+  return { init };
+})();
+
+/* ---------- 9. Shared photo album ---------- */
+const Photos = (() => {
+  let photos = store.get('photos', []), lb = 0;
+  const MAX_SIDE = 1100;
+
+  function compress(file) {
+    return new Promise((res, rej) => {
+      const fr = new FileReader();
+      fr.onerror = rej;
+      fr.onload = () => {
+        const img = new Image();
+        img.onerror = rej;
+        img.onload = () => {
+          const k = Math.min(1, MAX_SIDE / Math.max(img.width, img.height));
+          const cv = document.createElement('canvas'); cv.width = Math.round(img.width * k); cv.height = Math.round(img.height * k);
+          const g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, cv.width, cv.height); g.drawImage(img, 0, 0, cv.width, cv.height);
+          res(cv.toDataURL('image/jpeg', .78));
+        };
+        img.src = fr.result;
+      };
+      fr.readAsDataURL(file);
+    });
+  }
+  function meter() {
+    let chars = 0; try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); chars += k.length + (localStorage.getItem(k) || '').length; } } catch {}
+    const pct = clamp(chars / 5e6 * 100, 0, 100);
+    $('#storeBar').style.width = pct.toFixed(1) + '%'; $('#storeTxt').textContent = `${(chars / 1e6).toFixed(1)} / 5 MB`;
+  }
+  function render() {
+    $('#photoCount').textContent = photos.length ? `${photos.length} memor${photos.length === 1 ? 'y' : 'ies'} saved` : 'No photos yet';
+    $('#gallery').innerHTML = photos.length ? photos.map((p, i) => `
+      <figure class="photo glass rounded-2xl">
+        <img src="${p.data}" alt="${esc(p.caption || 'Our memory')}" class="w-full block cursor-zoom-in" data-open="${i}" loading="lazy" />
+        <figcaption class="p-3">
+          <input data-cap="${i}" value="${esc(p.caption || '')}" placeholder="Add a caption…" maxlength="80" class="w-full bg-transparent outline-none font-script text-2xl placeholder:text-cream/30 placeholder:text-base placeholder:font-sans" />
+          <div class="flex items-center justify-between text-[11px] text-cream/45 mt-1"><span><i data-lucide="calendar" class="w-3 h-3 inline -mt-0.5"></i> ${new Date(p.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}</span><button data-rm="${i}" class="hover:text-rose-300">Delete</button></div>
+        </figcaption></figure>`).join('') : '<div class="text-center text-cream/45 py-14" style="column-span:all"><i data-lucide="images" class="w-10 h-10 mx-auto text-gold/60 mb-3"></i><p class="font-script text-2xl">Add your first memory together</p></div>';
+    meter(); icons();
+  }
+  async function addFiles(files) {
+    const imgs = [...files].filter(f => f.type.startsWith('image/')); if (!imgs.length) return toast('Please choose image files 📷');
+    let ok = 0;
+    for (const f of imgs) {
+      try {
+        const data = await compress(f); photos.unshift({ id: Date.now() + ok, data, caption: '', date: Date.now() });
+        if (!store.set('photos', photos)) { photos.shift(); toast('Storage is full — delete some photos to add more.'); break; }
+        ok++;
+      } catch { toast(`Couldn't read ${f.name}`); }
+    }
+    render(); if (ok) toast(`${ok} photo${ok > 1 ? 's' : ''} added to our album 📸`);
+  }
+  function showLb(i) {
+    if (!photos.length) return closeLb();
+    lb = (i + photos.length) % photos.length; const p = photos[lb];
+    $('#lbImg').src = p.data; $('#lbCap').textContent = p.caption || ''; $('#lbDate').textContent = new Date(p.date).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const L = $('#lightbox'); L.classList.remove('hidden'); L.classList.add('flex');
+  }
+  function closeLb() { const L = $('#lightbox'); L.classList.add('hidden'); L.classList.remove('flex'); }
+  function init() {
+    render();
+    $('#photoInput').addEventListener('change', async e => { await addFiles(e.target.files); e.target.value = ''; });
+    const dz = $('#dropzone');
+    ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag'); }));
+    ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
+    dz.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+    $('#gallery').addEventListener('click', e => {
+      const o = e.target.closest('[data-open]'), r = e.target.closest('[data-rm]');
+      if (o) showLb(+o.dataset.open);
+      if (r) { if (confirm('Delete this photo from the album?')) { photos.splice(+r.dataset.rm, 1); store.set('photos', photos); render(); } }
+    });
+    $('#gallery').addEventListener('change', e => { const c = e.target.closest('[data-cap]'); if (c) { photos[+c.dataset.cap].caption = c.value; store.set('photos', photos); } });
+    $('#lbClose').addEventListener('click', closeLb);
+    $('#lbPrev').addEventListener('click', e => { e.stopPropagation(); showLb(lb - 1); });
+    $('#lbNext').addEventListener('click', e => { e.stopPropagation(); showLb(lb + 1); });
+    $('#lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') closeLb(); });
+    addEventListener('keydown', e => {
+      if ($('#lightbox').classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLb(); else if (e.key === 'ArrowLeft') showLb(lb - 1); else if (e.key === 'ArrowRight') showLb(lb + 1);
+    });
+  }
+  return { init };
+})();
+
+/* ---------- 10. Music player: your song file + generative lo-fi + custom MP3 ---------- */
+const Music = (() => {
+  const audio = $('#mp3');
+  const EIGHTH = 60 / 70 / 2;
+  const BASS = [38, 43, 36, 45];                                           // Dm7 · G7 · Cmaj7 · Am7
+  const VOICES = [[57, 60, 65, 69], [53, 59, 62, 65], [55, 59, 64, 67], [55, 60, 64, 67]];
+  const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+  let ac, master, bus, analyser, noiseBuf, crackle;
+  let mode = 'ambient', playing = false, timer = null, eqTimer = null, nextTime = 0, step = 0, t0 = 0;
+  let hasMp3 = false, mp3Name = CONFIG.songTitle, kind = 'song', songState = 'loading', vol = store.get('vol', 70);
+
+  /* ---- tiny IndexedDB helper to keep an uploaded custom MP3 between visits ---- */
+  const idb = {
+    open: () => new Promise((res, rej) => { const r = indexedDB.open('olh_db', 1); r.onupgradeneeded = () => r.result.createObjectStore('files'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }),
+    async put(k, v) { const db = await this.open(); return new Promise((res, rej) => { const tx = db.transaction('files', 'readwrite'); tx.objectStore('files').put(v, k); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); },
+    async get(k) { const db = await this.open(); return new Promise((res, rej) => { const q = db.transaction('files').objectStore('files').get(k); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); }); }
+  };
+
+  function ensureCtx() {
+    if (ac) return;
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    master = ac.createGain(); master.gain.value = vol / 100;
+    analyser = ac.createAnalyser(); analyser.fftSize = 64; master.connect(analyser); analyser.connect(ac.destination);
+    bus = ac.createGain(); bus.gain.value = 1;
+    const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2800; bus.connect(lp); lp.connect(master);
+    const conv = ac.createConvolver(), len = ac.sampleRate * 2.8, ib = ac.createBuffer(2, len, ac.sampleRate);
+    for (let ch = 0; ch < 2; ch++) { const d = ib.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6); }
+    conv.buffer = ib; const rg = ac.createGain(); rg.gain.value = .38; lp.connect(conv); conv.connect(rg); rg.connect(master);
+    const dl = ac.createDelay(2), fb = ac.createGain(), dg = ac.createGain(); dl.delayTime.value = EIGHTH * 3; fb.gain.value = .3; dg.gain.value = .22;
+    lp.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(dg); dg.connect(master);
+    noiseBuf = ac.createBuffer(1, ac.sampleRate, ac.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+  }
+  const env = (g, t, a, peak, dur) => { g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); };
+  function osc(type, f, t, dur, peak, a = .01, detune = 0) {
+    const o = ac.createOscillator(), g = ac.createGain(); o.type = type; o.frequency.value = f; o.detune.value = detune; env(g, t, a, peak, dur);
+    o.connect(g); g.connect(bus); o.start(t); o.stop(t + dur + .05);
+  }
+  const padChord = (notes, t, dur) => notes.forEach(m => { osc('triangle', mtof(m), t, dur + 1.5, .05, 1.3, 5); osc('sine', mtof(m), t, dur + 1.5, .05, 1.3, -6); });
+  const pluck = (m, t) => { osc('sine', mtof(m), t, 1.2, .11, .006); osc('triangle', mtof(m) * 2, t, .45, .03, .004); };
+  const bassNote = (m, t) => osc('sine', mtof(m), t, 2.4, .3, .03);
+  function noiseHit(t, dur, type, freq, peak) {
+    const s = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(); s.buffer = noiseBuf; f.type = type; f.frequency.value = freq; env(g, t, .002, peak, dur);
+    s.connect(f); f.connect(g); g.connect(bus); s.start(t, Math.random() * .5, dur + .05);
+  }
+  function kick(t) { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(42, t + .16); env(g, t, .004, .34, .3); o.connect(g); g.connect(bus); o.start(t); o.stop(t + .35); }
+  function playStep(s, t) {
+    const bar = Math.floor(s / 8), p = s % 8, ci = bar % 4, v = VOICES[ci];
+    if (p === 0) { padChord(v, t, EIGHTH * 8); bassNote(BASS[ci], t); }
+    const arp = [0, 2, 1, 3, 2, 1, 3, 2];
+    if ([0, 2, 3, 5, 6, 7].includes(p) && Math.random() > .12) pluck(v[arp[p]] + 12, t + (p % 2 ? .035 : 0));
+    if (p === 0 || p === 3) kick(t);
+    if (p === 2 || p === 6) noiseHit(t, .16, 'bandpass', 1900, .07);
+    if (p % 2) noiseHit(t, .05, 'highpass', 7500, .03);
+  }
+  function schedule() { while (nextTime < ac.currentTime + .3) { playStep(step, nextTime + (step % 2 ? .02 : 0)); nextTime += EIGHTH; step++; } }
+  function startCrackle() {
+    const b = ac.createBuffer(1, ac.sampleRate * 4, ac.sampleRate), d = b.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = Math.random() < .0007 ? (Math.random() * 2 - 1) * .9 : 0;
+    crackle = ac.createBufferSource(); crackle.buffer = b; crackle.loop = true; const f = ac.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 1200; const g = ac.createGain(); g.gain.value = .07;
+    crackle.connect(f); f.connect(g); g.connect(bus); crackle.start();
+  }
+  function startAmbient() {
+    ensureCtx(); if (ac.state === 'suspended') ac.resume();
+    bus.gain.cancelScheduledValues(ac.currentTime); bus.gain.setTargetAtTime(1, ac.currentTime, .05);
+    nextTime = ac.currentTime + .15; step = 0; t0 = ac.currentTime; clearInterval(timer); timer = setInterval(schedule, 40); startCrackle();
+  }
+  function stopAmbient() {
+    clearInterval(timer); timer = null;
+    if (ac) { bus.gain.cancelScheduledValues(ac.currentTime); bus.gain.setTargetAtTime(0, ac.currentTime, .12); try { crackle && crackle.stop(ac.currentTime + .4); } catch {} crackle = null; }
+  }
+
+  function paint() {
+    const isMp3 = mode === 'mp3';
+    $('#playBtn').innerHTML = `<i data-lucide="${playing ? 'pause' : 'play'}" class="w-5 h-5" fill="currentColor"></i>`;
+    $('#trackName').textContent = isMp3 ? (mp3Name || 'Your MP3') : 'Moonlit Garden';
+    $('#trackTag').textContent = isMp3 ? (kind === 'song' ? 'Our song' : 'Your music') : 'Ambient lo-fi';
+    $('#seek').disabled = !isMp3; $('#tDur').textContent = isMp3 ? '' : '∞';
+    $('#modeBtn').classList.toggle('is-active', isMp3);
+    icons();
+  }
+  async function start() {
+    try {
+      if (mode === 'mp3' && hasMp3) { audio.volume = vol / 100; await audio.play(); }
+      else { mode = 'ambient'; startAmbient(); }
+      playing = true; startEq(); paint();
+    } catch (e) { playing = false; paint(); toast('Tap the play button to start the music 🎵'); }
+  }
+  function stop() {
+    if (!playing) return;
+    if (mode === 'mp3') audio.pause(); else stopAmbient();
+    playing = false; stopEq(); paint();
+  }
+  const toggle = () => playing ? stop() : start();
+
+  function startEq() {
+    stopEq(); const bars = $$('#eq span'), data = new Uint8Array(analyser ? analyser.frequencyBinCount : 32);
+    eqTimer = setInterval(() => {
+      if (mode === 'mp3') { const t = performance.now() / 260; bars.forEach((b, i) => { b.style.height = (6 + (Math.sin(t * (1 + i * .23) + i * 1.7) * .5 + .5) * 22) + 'px'; }); return; }
+      analyser.getByteFrequencyData(data);
+      bars.forEach((b, i) => { b.style.height = (4 + data[i + 1] / 255 * 28) + 'px'; });
+      const cyc = EIGHTH * 8 * 4; $('#seek').value = ((ac.currentTime - t0) % cyc) / cyc * 1000; const s = Math.floor(ac.currentTime - t0); $('#tCur').textContent = `${Math.floor(s / 60)}:${pad(s % 60)}`;
+    }, 90);
+  }
+  function stopEq() { clearInterval(eqTimer); eqTimer = null; $$('#eq span').forEach(b => b.style.height = '4px'); }
+
+  function setCustom(blob, name) {
+    if (audio.dataset.url) URL.revokeObjectURL(audio.dataset.url);
+    const url = URL.createObjectURL(blob); audio.dataset.url = url; audio.dataset.kind = 'custom'; kind = 'custom';
+    audio.src = url; mp3Name = name.replace(/\.mp3$/i, ''); hasMp3 = true;
+  }
+  async function upload(file) {
+    if (!file) return;
+    if (!/audio|mpeg|mp3/i.test(file.type) && !/\.mp3$/i.test(file.name)) return toast('Please choose an MP3 file 🎵');
+    stop(); setCustom(file, file.name); mode = 'mp3';
+    idb.put('mp3', { blob: file, name: file.name }).catch(() => {});
+    await start(); toast(`Now playing: ${mp3Name} 🎶`);
+  }
+  async function swapMode() {
+    if (mode === 'ambient' && !hasMp3) return toast(`No song found. Add a file named ${CONFIG.songFile} next to index.html, or upload an MP3 🎵`, 4800);
+    const was = playing; stop(); mode = mode === 'ambient' ? 'mp3' : 'ambient'; paint(); if (was) await start();
+  }
+
+  function init() {
+    $('#vol').value = vol; audio.volume = vol / 100;
+    $('#vol').addEventListener('input', e => { vol = +e.target.value; store.set('vol', vol); audio.volume = vol / 100; if (master) master.gain.setTargetAtTime(vol / 100, ac.currentTime, .03); });
+    $('#playBtn').addEventListener('click', toggle);
+    $('#modeBtn').addEventListener('click', swapMode);
+    $('#mp3Input').addEventListener('change', e => { upload(e.target.files[0]); e.target.value = ''; });
+    $('#seek').addEventListener('input', e => { if (mode === 'mp3' && audio.duration) audio.currentTime = e.target.value / 1000 * audio.duration; });
+    const fmt = s => isFinite(s) ? `${Math.floor(s / 60)}:${pad(Math.floor(s % 60))}` : '0:00';
+    audio.addEventListener('timeupdate', () => { if (mode !== 'mp3') return; $('#seek').value = audio.duration ? audio.currentTime / audio.duration * 1000 : 0; $('#tCur').textContent = fmt(audio.currentTime); $('#tDur').textContent = fmt(audio.duration); });
+    audio.addEventListener('loadedmetadata', () => {
+      if (mode === 'mp3') $('#tDur').textContent = fmt(audio.duration);
+      if (audio.dataset.kind === 'song') { songState = 'yes'; hasMp3 = true; kind = 'song'; mp3Name = CONFIG.songTitle; if (!playing) mode = 'mp3'; paint(); }
+    });
+    audio.addEventListener('error', () => {
+      if (audio.dataset.kind !== 'song') return;
+      songState = 'no'; hasMp3 = false; if (!playing) mode = 'ambient'; paint();
+      console.info(`Song file "${CONFIG.songFile}" was not found next to index.html — using the built-in ambient music.`);
+    });
+    audio.dataset.kind = 'song'; audio.src = CONFIG.songFile; audio.load();
+
+    // a custom MP3 uploaded earlier on this device wins over the default song
+    idb.get('mp3').then(rec => { if (rec && rec.blob) { setCustom(rec.blob, rec.name); if (!playing) mode = 'mp3'; paint(); } }).catch(() => {});
+
+    document.addEventListener('olh:login', e => { if (e.detail.fresh && CONFIG.autoplayOnLogin && !playing) start(); });
+    document.addEventListener('olh:logout', () => stop());
+    paint();
+  }
+  return { init, start, stop, toggle };
+})();
+
+/* ---------- 11. Boot ---------- */
+[Auth, Counter, Bouquet, Share, Gate, Board, Games, Letters, Photos, Music].forEach((m, i) => {
+  try { m.init(); } catch (err) { console.error('Init failed for module', i, err); }
+});
+icons();
+addEventListener('load', icons);
+})();
+
+</script>
+</body>
+</html>
